@@ -11,7 +11,6 @@ ____________________
 
 [![License](https://img.shields.io/badge/license-GPLv2-red.svg)](https://raw.githubusercontent.com/filtering-rubika-ryson/reporter-rubika)
 
-[![Instagram](https://img.shields.io/badge/Instagram-@mu3almun.sav)]
 
 
 <div align="center">
