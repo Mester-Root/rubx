@@ -1,12 +1,18 @@
+# rubika client with python3 module RUBX ![](https://i.imgur.com/fe85aVR.png)
+
 # rubika library !
 # self for account
-____________________ 
-
- i love you 
 ____________________
 
  ***mr root and [saleh] in rubika: rubika.ir/indentation***
  ***saleh and you or friends :)***
+
+[![Python 3|2.7|3.x](https://img.shields.io/badge/python-3|3.0|3.x-yellow.svg)](https://www.python.org/)
+
+[![License](https://img.shields.io/badge/license-GPLv2-red.svg)](https://raw.githubusercontent.com/filtering-rubika-ryson/reporter-rubika)
+
+[![Instagram](https://img.shields.io/badge/Instagram-@mu3almun.sav)]
+
 
 <div align="center">
 
