@@ -68,5 +68,5 @@ ________________________
 the text **special**:
 
 - *[RUBX] > a library or module 'official' for rubika messnger with client server from iran ! for all .*
-- *[RUBX] > full method and all methods rubika !
-- *[RUBX] > use api's rubika for you .
+- *[RUBX] > full method and all methods rubika !*
+- *[RUBX] > use api's rubika for you .*
