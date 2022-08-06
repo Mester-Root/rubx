@@ -62,3 +62,7 @@ _______________________
 
 # seen in github :
 [![library](https://img.shields.io/puppetforge/mc/python?color=blue&label=RUBX&logo=RUBX&logoColor=red)](https://github.com/Mester-Root/rubx)
+
+________________________
+
+*a library or module for rubika messnger from iran ! for all .*
