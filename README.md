@@ -65,4 +65,4 @@ _______________________
 
 ________________________
 
-*a library or module for rubika messnger from iran ! for all .*
+*[RUBX] > a library or module 'official' for rubika messnger with client server from iran ! for all .*
