@@ -12,9 +12,6 @@ ____________________
 [![License](https://img.shields.io/badge/license-GPLv2-red.svg)](https://raw.githubusercontent.com/mester-root)
 
 
-[![PYPI](https://raw.githubusercontent.com/Mester-Root/rubx/main/pypi.png)](https://pypi.org/progect/rubx)
-
-
 <div align="center">
 
 ![issues](https://img.shields.io/github/issues/mester-root/rubx)
@@ -51,4 +48,7 @@ def main():
 main()
 ```
 
-# the rubx library full !
+# seen in pypi :
+
+[![PYPI](https://raw.githubusercontent.com/Mester-Root/rubx/main/pypi.png)](https://pypi.org/project/rubx/)
+
