@@ -8,7 +8,7 @@ _______________________
 
 [![License](https://img.shields.io/badge/license-GPLv2-red.svg)](https://raw.githubusercontent.com/Mester-Root/rubx/main/LICENSE)
 
-[![creator: ](https://img.shields.io/badge/Telegram-Channel-33A8E3)](https://t.me/creator-ryson)
+[![creator: ](https://img.shields.io/badge/Telegram-Channel-33A8E3)](https://t.me/ANTIweak)
 _______________________
 
 <div align="center">
