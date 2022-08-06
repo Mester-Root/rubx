@@ -12,7 +12,7 @@ ____________________
 [![License](https://img.shields.io/badge/license-GPLv2-red.svg)](https://raw.githubusercontent.com/mester-root)
 
 
-[![PYPI](https://pypi.org/project/rubx/)](https://pypi.org/project/rubx/)
+[![PYPI]([https://pypi.org/project/rubx/](https://raw.githubusercontent.com/Mester-Root/rubx/main/pypi.png))](https://pypi.org/project/rubx/)
 
 
 <div align="center">
