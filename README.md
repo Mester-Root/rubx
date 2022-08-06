@@ -1,6 +1,6 @@
 # rubika client with python3 module RUBX ![](https://i.imgur.com/fe85aVR.png)
 
-# rubika library !
+## rubika library !
 # self for account
 _______________________
 
