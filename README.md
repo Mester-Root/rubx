@@ -58,4 +58,5 @@ _______________________
 
 [![PYPI](https://raw.githubusercontent.com/Mester-Root/rubx/main/pypi.png)](https://pypi.org/project/rubx/)
 
-[![library](https://img.shields.io/puppetforge/mc/python?color=blue&label=RUBX&logo=RUBX&logoColor=red)](github.com/mester-root/rubx)
+# seen in github :
+[![library](https://img.shields.io/puppetforge/mc/python?color=blue&label=RUBX&logo=RUBX&logoColor=red)](https://github.com/Mester-Root/rubx)
