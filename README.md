@@ -9,7 +9,7 @@ ____________________
 
 [![Python 3|2.7|3.x](https://img.shields.io/badge/python-3|3.0|3.x-yellow.svg)](https://www.python.org/)
 
-[![License](https://img.shields.io/badge/license-GPLv2-red.svg)](https://raw.githubusercontent.com/mester-root)
+[![License](https://img.shields.io/badge/license-GPLv2-red.svg)](https://raw.githubusercontent.com/Mester-Root/rubx/main/LICENSE)
 
 
 <div align="center">
