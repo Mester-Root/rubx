@@ -25,11 +25,14 @@ ____________________
 
 # installing :
 
-[![installed :) ](https://raw.githubusercontent.com/Mester-Root/rubx/main/2022-08-06%20(3).png)]
+![installed :) ](https://raw.githubusercontent.com/Mester-Root/rubx/main/2022-08-06%20(3).png)
 
 ```pip install rubx --upgrade```
 
 # exmaple run and usage
+
+![code :](https://raw.githubusercontent.com/Mester-Root/rubx/main/vs-code.png.png)
+
 
 ```python 
 from rubx import rubx
