@@ -2,10 +2,7 @@
 
 # rubika library !
 # self for account
-____________________
-
- ***mr root and [saleh] in rubika: rubika.ir/indentation***
- ***saleh and you or friends :)***
+_______________________
 
 [![Python 3|2.7|3.x](https://img.shields.io/badge/python-3|3.0|3.x-yellow.svg)](https://www.python.org/)
 
