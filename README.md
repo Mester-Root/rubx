@@ -11,6 +11,7 @@ ____________________
 
 [![License](https://img.shields.io/badge/license-GPLv2-red.svg)](https://raw.githubusercontent.com/Mester-Root/rubx/main/LICENSE)
 
+[![creator: ](https://img.shields.io/badge/Telegram-Channel-33A8E3)](https://t.me/creator-ryson)
 
 <div align="center">
 
@@ -56,4 +57,5 @@ main()
 # seen in pypi :
 
 [![PYPI](https://raw.githubusercontent.com/Mester-Root/rubx/main/pypi.png)](https://pypi.org/project/rubx/)
+
 
