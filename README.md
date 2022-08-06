@@ -9,6 +9,7 @@ _______________________
 [![License](https://img.shields.io/badge/license-GPLv2-red.svg)](https://raw.githubusercontent.com/Mester-Root/rubx/main/LICENSE)
 
 [![creator: ](https://img.shields.io/badge/Telegram-Channel-33A8E3)](https://t.me/creator-ryson)
+_______________________
 
 <div align="center">
 
@@ -20,13 +21,14 @@ _______________________
 ![icon](https://raw.githubusercontent.com/Mester-Root/rubx/main/logo.png)
 </div>
 
+_______________________
 
 # installing :
 
 ![installed :) ](https://raw.githubusercontent.com/Mester-Root/rubx/main/2022-08-06%20(3).png)
 
 ```pip install rubx --upgrade```
-
+_______________________
 # exmaple run and usage
 
 ![code :](https://raw.githubusercontent.com/Mester-Root/rubx/main/vs-code.png.png)
@@ -50,6 +52,7 @@ def main():
             
 main()
 ```
+_______________________
 
 # seen in pypi :
 
