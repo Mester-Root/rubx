@@ -29,12 +29,13 @@ _______________________
 
 ![installed :) ](https://raw.githubusercontent.com/Mester-Root/rubx/main/2022-08-06%20(3).png)
 
+```pip3 install rubx==2.0.0```
+
+or
+
 ```pip3 install rubx --upgrade```
+
 _______________________
-# exmaple run and usage
-
-![code :](https://raw.githubusercontent.com/Mester-Root/rubx/main/vs-code.png.png)
-
 
 # info service:
 
