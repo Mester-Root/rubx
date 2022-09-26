@@ -36,24 +36,32 @@ _______________________
 ![code :](https://raw.githubusercontent.com/Mester-Root/rubx/main/vs-code.png.png)
 
 
+# info service:
+
+```python
+
+from rubx.rubx import Robot
+
+bot = Robot(auth='AUTH', proxy={'http':'http://127.0.0.1:9050'}, city='tehran', your_name='saleh')
+
+bot.getServiceInfo('GUID')
+
+```
+
+# report :
+
 ```python 
-from rubx import rubx
+from rubx.rubx import Robot
 
 auth : str = ''
-robot = rubx.Bot('AppName', auth=auth)
+robot = Robot(auth=auth)
 
 guid : str = ''
 
-def main():
-    while True:
-        try:
-            robot.reportObject(user=guid, mode='spam')
-            break
-        except:
-            pass
-            
-main()
+robot.reportObject(guid, 'spam')
 ```
+
+coming soon ...
 _______________________
 
 # seen in pypi :
