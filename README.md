@@ -8,9 +8,9 @@ _______________________
 
 [![License](https://img.shields.io/badge/license-GPLv2-red.svg)](https://raw.githubusercontent.com/Mester-Root/rubx/main/LICENSE)
 
-[![creator: ](https://img.shields.io/badge/Telegram-Channel-33A8E3)](https://t.me/ANTIweak)
+[![creator: ](https://img.shields.io/badge/Telegram-Channel-33A8E3)](https://t.me/rubx_library)
 
-[![Telegram](https://img.shields.io/badge/-telegram-red?color=white&logo=telegram&logoColor=black)](https://t.me/rubx_library)
+[![Telegram](https://img.shields.io/badge/-telegram-red?color=white&logo=telegram&logoColor=black)](https://t.me/creator_ryson)
 _______________________
 
 <div align="center">
