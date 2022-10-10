@@ -1,66 +1,40 @@
 #!/bin/python
-# library rubx or ribithon for anjoman
-# saleh 2 - bahman ahmadi
-from os import system; from pyuseragents import random as rm
+from os import system
 try: from requests import post, get
-except ModuleNotFoundError: system("pip install requests"); from requests import post, get
+except ModuleNotFoundError : system("pip install requests"); from requests import post, get
 try: import datetime
-except ModuleNotFoundError: system('pip install datetime'); import datetime
-from re import findall; from pathlib import Path; from random import randint, choice; from json import loads, dumps, JSONDecodeError
-import base64,urllib3; from Crypto.Cipher import AES; from Crypto.Util.Padding import pad, unpad; from time import sleep
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-class encryption:
-    def __init__(self, auth):
+except ModuleNotFoundError : system('pip install datetime'); import datetime
+from re import findall; from pathlib import Path; from random import randint, choice; from json import loads, dumps, JSONDecodeError; import base64, urllib3; from Crypto.Cipher import AES; from Crypto.Util.Padding import pad, unpad; from time import sleep; urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+class encryption :
+    def __init__(self, auth: str) -> None :
         self.key = bytearray(self.secret(auth), "UTF-8"); self.iv = bytearray.fromhex('00000000000000000000000000000000')
-    def replaceCharAt(self, e, t, i):
-        return e[0:t] + i + e[t + len(i):]
-    def secret(self, e):
-        t = e[0:8]
-        i = e[8:16]
-        n = e[16:24] + t + e[24:32] + i
-        s = 0
-        while s < len(n):
+    def replaceCharAt(self, e, t, i) : return e[0:t] + i + e[t + len(i):]
+    def secret(self, e) :
+        t, i, s = e[0:8], e[8:16], 0; n = e[16:24] + t + e[24:32] + i
+        while s < len(n) :
             e = n[s]
-            if e >= '0' and e <= '9':
+            if e >= '0' and e <= '9' :
                 t = chr((ord(e[0]) - ord('0') + 5) % 10 + ord('0'))
                 n = self.replaceCharAt(n, s, t)
-            else:
+            else :
                 t = chr((ord(e[0]) - ord('a') + 9) % 26 + ord('a'))
                 n = self.replaceCharAt(n, s, t)
             s += 1
         return n
-    def encrypt(self, text):
-        raw = pad(text.encode('UTF-8'), AES.block_size)
-        aes = AES.new(self.key, AES.MODE_CBC, self.iv)
-        enc = aes.encrypt(raw)
-        result = base64.b64encode(enc).decode('UTF-8')
-        return result
-    def decrypt(self, text):
-        aes = AES.new(self.key, AES.MODE_CBC, self.iv)
-        dec = aes.decrypt(base64.urlsafe_b64decode(text.encode('UTF-8')))
-        result = unpad(dec, AES.block_size).decode('UTF-8')
-        return result
-class accesses:
-    class admin:
-        pin: str = "PinMessages"
-        newAdmin: str = "SetAdmin"
-        editInfo: str = "ChangeInfo"
-        banMember: str = "BanMember"
-        changeLink: str = "SetJoinLink"
-        editMembersAccess: str = "SetMemberAccess"
-        deleteMessages: str = "DeleteGlobalAllMessages"
-    class user:
-        viewMembers: str = "ViewMembers"
-        viewAdmins: str = "ViewAdmins"
-        sendMessage: str = "SendMessages"
-        addMember: str = "AddMember"
-class clients:
+    def encrypt(self, text: str) -> str :
+        raw, aes = pad(text.encode('UTF-8'), AES.block_size), AES.new(self.key, AES.MODE_CBC, self.iv); enc = aes.encrypt(raw); result = base64.b64encode(enc).decode('UTF-8'); return result
+    def decrypt(self, text: str) -> str :
+        aes = AES.new(self.key, AES.MODE_CBC, self.iv); dec = aes.decrypt(base64.urlsafe_b64decode(text.encode('UTF-8'))); result = unpad(dec, AES.block_size).decode('UTF-8'); return result
+class accesses :
+    class admin : pin, newAdmin, editInfo, banMember, changeLink, editMemberAccess, deleteMessages = "PinMessages", "setAdmin", "ChangeInfo", "BanMember", "SetJoinLink", "SetMemberAccess", "DeleteGlobalAllMessages"
+    class user : viewMembers, viewAdmins, sendMessage, addMember= "ViewMembers", "ViewAdmins", "SendMessages", "AddMember"
+class clients :
     web, android = {
-    "app_name":"Main",
-    "app_version":"4.1.2",
-    "platform":"Web",
-    "package":"web.rubika.ir",
-    "lang_code":"fa"
+        "app_name":"Main",
+        "app_version":"4.1.4",
+        "platform":"Web",
+        "package":"web.rubika.ir",
+        "lang_code":"fa"
     }, {
         "app_name":"Main",
         "app_version":"2.8.1",
@@ -71,68 +45,52 @@ class clients:
 defaultDevice: dict = {
     "app_version":"MA_2.9.8",
     "device_hash":"CEF34215E3E610825DC1C4BF9864D47A",
-    "device_model":"rubithon",
+    "device_model":"rubx-lib",
     "is_multi_account": False,
     "lang_code":"fa",
     "system_version":"SDK 22",
     "token":"cgpzI3mbTPKddhgKQV9lwS:APA91bE3ZrCdFosZAm5qUaG29xJhCjzw37wE4CdzAwZTawnHZM_hwZYbPPmBedllAHlm60v5N2ms-0OIqJuFd5dWRAqac2Ov-gBzyjMx5FEBJ_7nbBv5z6hl4_XiJ3wRMcVtxCVM9TA-",
     "token_type":"Firebase"
 }
-citys, proxys = [], []
-sent = (lambda data: ['error' if data['status'].lower() != 'ok' else 'yeah'])
-class Robot:
-    def __init__(self, app='rubithon', phone_number=None, auth=None, device=defaultDevice, proxy={'http':'http://127.0.0.1:9050'}, your_name='rubx', city='tehran', logo=True) :
-        self.app = app
-        citys.append(city)
-        self.proxy = proxy
-        proxys.append(proxy)
-        if logo != False:
-            [(print(s, flush=True, end=''), sleep(0.008)) for s in '\n\033[31m< rubx > \033[36m | \033[31mstarted!\n']
-        if your_name != None:
+citys, proxys, auth_, sent = [], [], [], (lambda data: ['error' if data['status'].lower() != 'ok' else 'yeah'])
+class Robot :
+    def __init__(self, app='rubx', phone_number=None, auth=None, device=defaultDevice, proxy={'http':'http://127.0.0.1:9050'}, your_name='rubx', city='tehran', logo=True) -> None :
+        self.app = app; citys.append(city); self.proxy = proxy; proxys.append(proxy)
+        if logo != False : [(print(s, flush=True, end=''), sleep(0.01)) for s in f'\n\033[0m< \033[31mrubx \033[0m> \033[36m | \033[31mstarted in \033[0m{str(datetime.datetime.now())}\n']
+        if your_name != None :
             self.your_name = your_name
-            try:
-                with open('library-info.txt', 'w+') as f:
-                    f.write('name fan: '+your_name+'\ntime started: '+str(datetime.datetime.now())+'\nyour ip: '+str(get('https://api.ipify.org').text))
-            except: pass
+            try :
+                with open('library-info.txt', 'w+') as f: f.write('name fan: '+your_name+'\ntime started: '+str(datetime.datetime.now())+'\nyour ip: '+str(get('https://api.ipify.org').text))
+            except : pass
         try:
             if auth == None:
-                with open(f"{app}.json", "r") as account:
+                with open(f"{app}.json", "r") as account :
                     account = loads(account.read())
-                    self.auth = account["data"]["auth"]
+                    self.auth = account["data"]["auth"]; auth_.append(self.auth)
             else: raise FileNotFoundError('file not find')
-        except FileNotFoundError:
-                if auth != None:
-                    self.auth = auth
-                elif phone_number != None:
+        except FileNotFoundError :
+                if auth != None :
+                    self.auth = auth; auth_.append(auth)
+                elif phone_number != None :
                     try:
-                        code = Robot.sendCode(phone_number, 'Internal')["data"]["phone_code_hash"]
-                        account = Robot.signIn(phone_number, code, input("please enter activation code : "))
-                        with open(f"{app}.json", "w") as file:
-                            file.write(dumps(account, indent=4, ensure_ascii=False))
-                        self.auth = account["data"]["auth"]
-                        Robot.registerDevice(self.auth, device=device)
-                    except KeyboardInterrupt:
-                        exit()
-                else:
-                    try:
-                        phone_number = input("please enter your phone number : ")
-                        code = Robot.sendCode(phone_number, 'Internal')["data"]["phone_code_hash"]
-                        account = Robot.signIn(phone_number, code, input("please enter activation code : "))
-                        self.auth = account["data"]["auth"]
-                        with open(f"{app}.json", "w") as file:
+                        code = Robot.sendCode(phone_number, 'Internal')["data"]["phone_code_hash"]; account = Robot.signIn(phone_number, code, input("please enter activation code : "))
+                        with open(f"{app}.json", "w") as file : file.write(dumps(account, indent=4, ensure_ascii=False))
+                        self.auth = account["data"]["auth"]; auth_.append(self.auth); Robot.registerDevice(self.auth, device=device)
+                    except KeyboardInterrupt : exit()
+                else :
+                    try :
+                        phone_number = input("please enter your phone number : "); code = Robot.sendCode(phone_number, 'Internal')["data"]["phone_code_hash"]; account = Robot.signIn(phone_number, code, input("please enter activation code : ")); self.auth = account["data"]["auth"]; auth_.append(self.auth)
+                        with open(f"{app}.json", "w") as file :
                             file.write(dumps(account, indent=4, ensure_ascii=False))
                         Robot.registerDevice(self.auth, device=device)
-                    except KeyboardInterrupt:
+                    except KeyboardInterrupt :
                         exit()
-        except JSONDecodeError:
-            raise RuntimeError(f"\033[35mfile is invalid. please login again to your account and then DO NOT modify the {app}.json")
+        except JSONDecodeError : raise RuntimeError(f"\033[35mfile is invalid. please login again to your account and then DO NOT modify the {app}.json")
         self.enc = encryption(self.auth)
+    def __enter__(self) : return self
+    def __exit__(self, *args, **kwargs) -> None : pass
     @staticmethod
     def _getURL() -> str :
-        #for i in range(10):
-            #try: return dict(get('https://getdcmess.iranlms.ir/', timeout=5).json())['data']['API']['143']
-            #except: pass
-        #[(servers['API']['136']) if self.city.lower() == 'ilam' else None]
         servers: dict = {"API": {
             "174": "https://messengerg2c74.iranlms.ir",
             "122": "https://messengerg2c22.iranlms.ir", 
@@ -203,36 +161,37 @@ class Robot:
         else:
             return servers['API'][str(randint(101, 154))]
     @staticmethod
-    def _tmpGeneration() -> str:
-        tmp_session = ""
-        choices = [*"abcdefghijklmnopqrstuvwxyz0123456789"]
+    def getUrl() -> dict :
+        for i in range(10) :
+            try: return loads(post(url='https://getdcmess.iranlms.ir/', json = {"api_version":"4","method":"getDCs","client":clients.web}, timeout=5)); break
+            except: pass
+    @staticmethod
+    def _tmpGeneration() -> str :
+        tmp_session, choices = '', [*"abcdefghijklmnopqrstuvwxyz0123456789"]
         for i in range(32): tmp_session += choice(choices)
         return tmp_session
     @staticmethod
-    def sendCode(phone_number, send_type='SMS') -> dict:
+    def sendCode(phone_number: str, send_type='SMS', password=None) -> dict:
         '''send_type <- key/value -> SMS/Internal '''
-        tmp = Robot._tmpGeneration()
-        enc = encryption(tmp)
-        while True:
-            try:
+        tmp = Robot._tmpGeneration(); enc = encryption(tmp); req = {"phone_number":f"98{phone_number[1:]}", "send_type": send_type}
+        if password != None : req['pass_key'] = password
+        while 1 :
+            try :
                 return loads(enc.decrypt(post(json={"api_version":"5","tmp_session": tmp,"data_enc": enc.encrypt(dumps({
                     "method":"sendCode",
-                    "input":{
-                        "phone_number":f"98{phone_number[1:]}",
-                        "send_type":send_type
-                    },
+                    "input":req,
                     "client": clients.web
                 }))},url=Robot._getURL(), timeout=5, proxies=proxys[0]).json()["data_enc"]))
-            except Exception as e: print(e)
+            except Exception as e : print(e)
     @staticmethod
-    def signIn(phone_number,phone_code_hash,phone_code) -> dict:
+    def signIn(phone_number,phone_code_hash,phone_code) -> dict :
         '''
         phone_number : phone number of target's account : 09XXXXXXXXX
         phone_code_hash : hash of code sent to phone
         phone_code : code sent to phone
         '''
-        while True:
-            try:
+        while 1 :
+            try :
                 tmp = Robot._tmpGeneration()
                 enc = encryption(tmp)
                 return loads(enc.decrypt(post(json={"api_version":"5","tmp_session": tmp,"data_enc":enc.encrypt(dumps({
@@ -244,13 +203,12 @@ class Robot:
                     },
                     "client": clients.web
                 }))},url=Robot._getURL(), timeout=5, proxies=proxys[0]).json().get("data_enc")))
-            except Exception as e: print(e)
+            except Exception as e : print(e)
     @staticmethod
-    def registerDevice(auth, device=defaultDevice) -> dict:
-        while True:
-            try:
-                enc = encryption(auth)
-                response = loads(enc.decrypt(post(json={
+    def registerDevice(auth, device=defaultDevice) -> dict :
+        while 1 :
+            try :
+                enc = encryption(auth); response = loads(enc.decrypt(post(json={
                     "api_version":"4",
                     "auth":auth,
                     "client": clients.android,
@@ -258,44 +216,32 @@ class Robot:
                     "method":"registerDevice",
                 },url=Robot._getURL(), proxies=proxys[0]).json()["data_enc"]))
                 return response
-            except JSONDecodeError: break
+            except JSONDecodeError : break
     @staticmethod
-    def _parse(mode:str, text:str):
-        results = []
-        if mode.upper() == "HTML":
-            realText = text.replace("<b>","").replace("</b>","").replace("<i>","").replace("</i>","").replace("<pre>","").replace("</pre>","")
-            bolds = findall("<b>(.*?)</b>",text)
-            italics = findall("<i>(.*?)</i>",text)
-            monos = findall("<pre>(.*?)</pre>",text)
-            bResult = [realText.index(i) for i in bolds]
-            iResult = [realText.index(i) for i in italics]
-            mResult = [realText.index(i) for i in monos]
-            for bIndex,bWord in zip(bResult,bolds):
+    def _parse (mode: str, text: str) -> list :
+        results: list = []
+        if mode.upper() == "HTML" :
+            realText = text.replace("<b>", "").replace("</b>", "").replace("<i>", "").replace("</i>", "").replace("<pre>", "").replace("</pre>", ""); bolds = findall("<b>(.*?)</b>", text); italics = findall("<i>(.*?)</i>", text); monos = findall("<pre>(.*?)</pre>", text); bResult = [realText.index(i) for i in bolds]; iResult = [realText.index(i) for i in italics]; mResult = [realText.index(i) for i in monos]
+            for bIndex,bWord in zip(bResult,bolds) : 
                 results.append({
                     "from_index": bIndex,
                     "length": len(bWord),
                     "type": "Bold"
                 })
-            for iIndex,iWord in zip(iResult,italics):
+            for iIndex,iWord in zip(iResult,italics) :
                 results.append({
                     "from_index": iIndex,
                     "length": len(iWord),
                     "type": "Italic"
                 })
-            for mIndex,mWord in zip(mResult,monos):
+            for mIndex,mWord in zip(mResult,monos) :
                 results.append({
                     "from_index": mIndex,
                     "length": len(mWord),
                     "type": "Mono"
                 })
-        elif mode.lower() == "markdown":
-            realText = text.replace("**","").replace("__","").replace("`","")
-            bolds = findall(r"\*\*(.*?)\*\*",text)
-            italics = findall(r"\_\_(.*?)\_\_",text)
-            monos = findall("`(.*?)`",text)
-            bResult = [realText.index(i) for i in bolds]
-            iResult = [realText.index(i) for i in italics]
-            mResult = [realText.index(i) for i in monos]
+        elif mode.lower() == "markdown" :
+            realText = text.replace("**", "").replace("__", "").replace("`", ""); bolds = findall(r"\*\*(.*?)\*\*", text); italics = findall(r"\_\_(.*?)\_\_",text); monos = findall("`(.*?)`",text); bResult = [realText.index(i) for i in bolds]; iResult = [realText.index(i) for i in italics];  mResult = [realText.index(i) for i in monos]
             for bIndex,bWord in zip(bResult,bolds):
                 results.append({
                     "from_index": bIndex,
@@ -343,45 +289,29 @@ class Robot:
                 "accept-encoding": "gzip",
                 "user-agent": "okhttp/3.12.1"
             }
-            if len(bytef) <= 131072:
-                header["part-number"], header["total-part"] = "1","1"
-
-                while True:
-                    try:
-                        j = post(data=bytef,url=url,headers=header).text
-                        j = loads(j)['data']['access_hash_rec']
-                        break
-                    except Exception as e:
-                        continue
-
+            if len(bytef) <= 131072 :
+                header["part-number"], header["total-part"] = "1", "1"
+                while 1 :
+                    try :
+                        j = post(data=bytef, url=url, headers=header).text; j = loads(j)['data']['access_hash_rec']; break
+                    except Exception : continue
                 return [frequest, j]
-            else:
-                t = round(len(bytef) / 131072 + 1)
-                for i in range(1,t+1):
-                    if i != t:
-                        k = i - 1
-                        k = k * 131072
-                        while True:
-                            try:
-                                header["chunk-size"], header["part-number"], header["total-part"] = "131072", str(i),str(t)
-                                o = post(data=bytef[k:k + 131072],url=url,headers=header).text
-                                o = loads(o)['data']
-                                break
-                            except Exception as e:
-                                continue
-                    else:
-                        k = i - 1
-                        k = k * 131072
-                        while True:
-                            try:
-                                header["chunk-size"], header["part-number"], header["total-part"] = str(len(bytef[k:])), str(i),str(t)
-                                p = post(data=bytef[k:],url=url,headers=header).text
-                                p = loads(p)['data']['access_hash_rec']
-                                break
-                            except Exception as e:
-                                continue
+            else :
+                t: int = round(len(bytef) / 131072 + 1)
+                for i in range(1,t+1) :
+                    if i != t :
+                        k = i - 1; k = k * 131072
+                        while 1 :
+                            try :
+                                header["chunk-size"], header["part-number"], header["total-part"] = "131072", str(i),str(t); o = post(data=bytef[k:k + 131072],url=url,headers=header).text; o = loads(o)['data']; break
+                            except Exception : continue
+                    else :
+                        k = i - 1; k = k * 131072
+                        while 1 :
+                            try : header["chunk-size"], header["part-number"], header["total-part"] = str(len(bytef[k:])), str(i),str(t); p = post(data=bytef[k:],url=url,headers=header).text; p = loads(p)['data']['access_hash_rec']; break
+                            except Exception : continue
                         return [frequest, p]
-        else:
+        else :
             frequest = loads(self.enc.decrypt(post(json={"api_version":"5","auth": self.auth,"data_enc":self.enc.encrypt(dumps({
                 "method":"requestSendFile",
                 "input":{
@@ -391,11 +321,7 @@ class Robot:
                 },
                 "client": clients.web
             }))},url=Robot._getURL()).json()["data_enc"]))["data"]
-
-            hash_send = frequest["access_hash_send"]
-            file_id = frequest["id"]
-            url = frequest["upload_url"]
-            bytef = get(file).content
+            hash_send = frequest["access_hash_send"]; file_id = frequest["id"]; url = frequest["upload_url"]; bytef = get(file).content
             header = {
                 'auth':self.auth,
                 'Host':url.replace("https://","").replace("/UploadFile.ashx",""),
@@ -407,74 +333,47 @@ class Robot:
                 "accept-encoding": "gzip",
                 "user-agent": "okhttp/3.12.1"
             }
-            if len(bytef) <= 131072:
-                header["part-number"], header["total-part"] = "1","1"
-
-                while True:
-                    try:
-                        j = post(data=bytef,url=url,headers=header).text
-                        j = loads(j)['data']['access_hash_rec']
-                        break
-                    except Exception as e:
-                        continue
+            if len(bytef) <= 131072 :
+                header["part-number"], header["total-part"] = "1", "1"
+                while 1 :
+                    try : j = post(data=bytef,url=url,headers=header).text; j = loads(j)['data']['access_hash_rec']; break
+                    except Exception : continue
                 return [frequest, j]
-            else:
+            else :
                 t = round(len(bytef) / 131072 + 1)
                 for i in range(1,t+1):
-                    if i != t:
-                        k = i - 1
-                        k = k * 131072
-                        while True:
-                            try:
-                                header["chunk-size"], header["part-number"], header["total-part"] = "131072", str(i),str(t)
-                                o = post(data=bytef[k:k + 131072],url=url,headers=header).text
-                                o = loads(o)['data']
-                                break
-                            except Exception as e:
-                                continue
-                    else:
-                        k = i - 1
-                        k = k * 131072
-                        while True:
-                            try:
-                                header["chunk-size"], header["part-number"], header["total-part"] = str(len(bytef[k:])), str(i),str(t)
-                                p = post(data=bytef[k:],url=url,headers=header).text
-                                p = loads(p)['data']['access_hash_rec']
-                                break
-                            except Exception as e:
-                                continue
+                    if i != t :
+                        k = i - 1; k = k * 131072
+                        while 1 :
+                            try : header["chunk-size"], header["part-number"], header["total-part"] = "131072", str(i),str(t); o = post(data=bytef[k:k + 131072],url=url,headers=header).text; o = loads(o)['data']; break
+                            except : continue
+                    else :
+                        k = i - 1; k = k * 131072
+                        while 1 :
+                            try : header["chunk-size"], header["part-number"], header["total-part"] = str(len(bytef[k:])), str(i),str(t); p = post(data=bytef[k:],url=url,headers=header).text; p = loads(p)['data']['access_hash_rec']; break
+                            except Exception : continue
                         return [frequest, p]
     @staticmethod
-    def _getThumbInline(image_bytes:bytes):
-        import io, base64, PIL.Image
-        im = PIL.Image.open(io.BytesIO(image_bytes))
-        width, height = im.size
-        if height > width:
-            new_height = 40
-            new_width  = round(new_height * width / height)
-        else:
-            new_width  = 40
-            new_height = round(new_width * height / width)
-        im = im.resize((new_width, new_height), PIL.Image.ANTIALIAS)
-        changed_image = io.BytesIO()
-        im.save(changed_image, format='PNG')
-        changed_image = changed_image.getvalue()
-        return base64.b64encode(changed_image)
+    def _getThumbInline(image_bytes: bytes) -> bytes :
+        import io, base64, PIL.Image; im = PIL.Image.open(io.BytesIO(image_bytes)); width, height = im.size
+        if height > width : new_height = 40; new_width  = round(new_height * width / height)
+        else : new_width  = 40; new_height = round(new_width * height / width)
+        im = im.resize((new_width, new_height), PIL.Image.ANTIALIAS); changed_image = io.BytesIO(); im.save(changed_image, format='PNG'); changed_image = changed_image.getvalue(); return base64.b64encode(changed_image)
     @staticmethod
-    def _getImageSize(image_bytes:bytes):
-        import io, PIL.Image
-        im = PIL.Image.open(io.BytesIO(image_bytes))
-        width, height = im.size
-        return [width , height]
-    def getChats(self, start_id=None):
-        req = loads(self.enc.decrypt(post(json={"api_version":"5","auth":self.auth,"data_enc":self.enc.encrypt(dumps({
-            "method":"getChats",
-            "input":{
-                "start_id":start_id
-            },
-            "client": clients.web
-        }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))
-        return req
+    def _getImageSize(image_bytes: bytes) -> list[str, ]:
+        import io, PIL.Image; im = PIL.Image.open(io.BytesIO(image_bytes)); width, height = im.size; return [width , height]
+    def getChats(self, start_id=None) -> dict :
+        for i in range(3) :
+            try :
+                return loads(self.enc.decrypt(post(json={"api_version":"5","auth":self.auth,"data_enc":self.enc.encrypt(dumps({
+                    "method":"getChats",
+                    "input":{
+                        "start_id":start_id
+                    },
+                    "client": clients.web
+                }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))
+                break
+            except : pass
     def sendMessage(self, chat_id, text, metadata=[], parse_mode=None, message_id=None) -> dict:
         inData = {
             "method":"sendMessage",
@@ -487,10 +386,8 @@ class Robot:
             "client": clients.web
         }
         if metadata != [] : inData["input"]["metadata"] = {"meta_data_parts":metadata}
-        if parse_mode != None :
-            inData["input"]["metadata"] = {"meta_data_parts": Robot._parse(parse_mode, text)}
-            inData["input"]["text"] = text.replace("<b>","").replace("</b>","").replace("<i>","").replace("</i>","").replace("<pre>","").replace("</pre>","") if parse_mode.upper() == "HTML" else text.replace("**","").replace("__","").replace("`","")
-        for i in range(4):
+        if parse_mode != None : inData["input"]["metadata"] = {"meta_data_parts": Robot._parse(parse_mode, text)}; inData["input"]["text"] = text.replace("<b>","").replace("</b>","").replace("<i>","").replace("</i>","").replace("<pre>","").replace("</pre>","") if parse_mode.upper() == "HTML" else text.replace("**","").replace("__","").replace("`","")
+        for i in range(4) :
             try: return loads(self.enc.decrypt(post(json={"api_version":"5","auth":self.auth,"data_enc":self.enc.encrypt(dumps(inData))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))
             except: pass
     def editMessage(self, message_id, chat_id, newText, metadata=[], parse_mode=None) -> dict:
@@ -503,11 +400,31 @@ class Robot:
             },
             "client": clients.web}
         if metadata != [] : inData["input"]["metadata"] = {"meta_data_parts":metadata}
-        if parse_mode != None :
-            inData["input"]["metadata"] = {"meta_data_parts":Robot._parse(parse_mode, newText)}
-            inData["input"]["text"] = newText.replace("<b>","").replace("</b>","").replace("<i>","").replace("</i>","").replace("<pre>","").replace("</pre>","") if parse_mode.upper() == "HTML" else newText.replace("**","").replace("__","").replace("`","")
+        if parse_mode != None : inData["input"]["metadata"] = {"meta_data_parts":Robot._parse(parse_mode, newText)}; inData["input"]["text"] = newText.replace("<b>","").replace("</b>","").replace("<i>","").replace("</i>","").replace("<pre>","").replace("</pre>","") if parse_mode.upper() == "HTML" else newText.replace("**","").replace("__","").replace("`","")
         for i in range(4):
             try: return loads(self.enc.decrypt(post(json={"api_version":"5","auth": self.auth,"data_enc":self.enc.encrypt(dumps({inData}))},url=Robot._getURL(), proxies=self.proxy, timeout=5).json()["data_enc"])); break
+            except: pass
+    def _setMethods_(data: dict, mode=None) -> dict :
+        '''mode for client android and web'''
+        enc: encryption = encryption(auth_[0])
+        for i in range(4):
+            try: return loads(enc.decrypt(post(json={"api_version":"5","auth":auth_[0],"data_enc":enc.encrypt(dumps(data))}, url=Robot._getURL(), timeout=5, proxies=proxys[0]).json()["data_enc"])); break
+            except: pass
+    getChatsUpdates = (lambda self, state='0' : Robot._setMethods_(data={"method":"getChatsUpdates","input":{"state":state},"client":{"app_name":"Main","app_version":"4.1.4","platform":"Web","package":"web.rubika.ir","lang_code":"fa"}}))
+    getMessagesInterval = (lambda self, guid, middle_message_id : Robot._setMethods_({"method":"getMessagesInterval","input":{"object_guid":guid,"middle_message_id":middle_message_id},"client":{"app_name":"Main","app_version":"4.1.4","platform":"Web","package":"web.rubika.ir","lang_code":"fa"}}))
+    getFolders = (lambda self : Robot._setMethods_({"method":"getFolders","input":{},"client":{"app_name":"Main","app_version":"4.1.4","platform":"Web","package":"web.rubika.ir","lang_code":"fa"}}))
+    def getStickersBySetIDs(self, sticker_set_ids: list) -> dict :
+        '''sticker ids :  ['5e0c957a6282726921b7634n', '6e0c957a6282726921b7635l']'''
+        # server client: api https://messengerg2c121.iranlms.ir/
+        for i in range(4):
+            try:
+                return loads(self.enc.decrypt(post(json={"api_version":"5","auth":self.auth,"data_enc":self.enc.encrypt(dumps({
+                    "method":"getStickersBySetIDs",
+                    "input":{
+                        "sticker_set_ids":sticker_set_ids},
+                    "client": clients.web
+                }))},url='https://messengerg2c121.iranlms.ir/', timeout=5, proxies=self.proxy).json()["data_enc"]))
+                break
             except: pass
     def deleteMessages(self, chat_id, message_ids) -> dict:
         for i in range(4):
@@ -1313,7 +1230,7 @@ class Robot:
             except: pass
     def getMe(self):
         return Robot(self.app_name, auth=self.auth, displayWelcome=False).getUserInfo(loads(open(self.app_name+".json","rt").read()).get("data").get("user").get("user_guid"))
-    def reportObject(self, user_guid: str,  mode: str) -> dict:
+    def reportObject(self, user_guid: str,  mode: str, message_id=None) -> dict:
         for i in range(4):
             try:
                 return loads(self.enc.decrypt(post(json={
@@ -1325,6 +1242,7 @@ class Robot:
                         "report_description": mode, 
                         'report_type_object': 'Object', 
                         'report_type': 100,
+                        'meesage_id': message_id
                     })),
                     "method":"reportObject"
                 },url=Robot._getURL(), proxies=self.proxy).json()["data_enc"]))
@@ -1524,27 +1442,6 @@ class Robot:
                 }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))["data"]
             except: pass
     def joinChannelAction(self, guid: str) -> dict:
-        headers: dict = {
-            'Host': Robot._getURL(),
-            'authority': Robot._getURL(),
-            'method': 'POST',
-            'path': '/',
-            'scheme': 'https',
-            'accept': 'application/json, text/plain, */*',
-            'accept-encoding': 'gzip, deflate, br',
-            'accept-language': 'en-US,en;q=0.9',
-            'content-length': '395',
-            'content-type': 'application/json',
-            'origin': 'https://web.rubika.ir',
-            'referer': 'https://web.rubika.ir/',
-            'sec-ch-ua':'''"Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"''',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': "Windows",
-            'sec-fetch-dest': 'empty',
-            'sec-fetch-mode': 'cors',
-            'sec-fetch-site': 'cross-site',
-            'user-agent': rm()
-            }
         for i in range(3):
             try: return loads(self.enc.decrypt(post(json={"api_version":"5","auth":self.auth,"data_enc":self.enc.encrypt(dumps({"method":"joinChannelAction","input":{"channel_guid":guid,"action":"Join"},"client": clients.web}))},url=Robot._getURL(), timeout=5, proxies=self.proxy)))
             except: pass
@@ -1758,6 +1655,7 @@ transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=rtpmap:63 red/48000/2
                 }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))["data"]
             except: pass
     def appUrl (self, app_url: str) -> dict:
+        '''for open link on rubika and info link'''
         for i in range(4):
             try:
                 return loads(self.enc.decrypt(post(json={"api_version":"5","auth": self.auth,"data_enc":self.enc.encrypt(dumps({
@@ -1775,7 +1673,7 @@ transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=rtpmap:63 red/48000/2
                     "method":"sendChatActivity",
                     "input":{
                         "object_guid":target_guid,
-                        "activity":"rubithon-llibrary"
+                        "activity":"rubx-lib"
                         },
                     "client": clients.web
                 }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))["data"]
@@ -1825,60 +1723,125 @@ transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=rtpmap:63 red/48000/2
                     "client": clients.web
                 }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))["data"]
             except: pass
-    def sendMessages(self, target_guid: str, texts: list, msg_id=None) -> dict:
+    def getChannelInfo(self, guid: str) -> dict:
         for i in range(4):
             try:
                 return loads(self.enc.decrypt(post(json={"api_version":"5","auth": self.auth,"data_enc":self.enc.encrypt(dumps({
-                  "method":"sendMessage",
+                  "method":"getChannelInfo",
                   "input":{
-                      "object_guid":target_guid,
-                      "rnd":str(randint(100000, 999999999)),
-                      "text":texts,
-                      'reply_to_message_id': msg_id
+                      "channel_guid": guid
                       },
                     "client": clients.web
                 }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))["data"]
             except: pass
+    def getMessagesUpdates(self, guid: str, state='0') -> dict:
+        '''guid : chat_id for get messages , state : state or time stamp for get messages'''
+        for i in range(4):
+            try:
+                return loads(self.enc.decrypt(post(json={"api_version":"5","auth": self.auth,"data_enc":self.enc.encrypt(dumps({
+                  "method":"getMessagesUpdates",
+                  "input":{
+                      "object_guid": guid,
+                      "state":state
+                      },
+                    "client": clients.web
+                }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))["data"]
+            except: pass
+    def getBannedGroupMembers(self, guid: str, state=None) -> dict :
+        for i in range(4):
+            try: return loads(self.enc.decrypt(post(json={'api_version': '4', 'auth': self.auth, 'client': clients.android, 'method': 'getBannedGroupMembers', 'data_enc': self.enc.encrypt(dumps({'group_guid': guid}))}, url=Robot._getURL(), timeout=5, proxies=self.proxy).json()['data_enc']))
+            except: pass
+    def getGroupMentionList(self, guid: str) -> dict :
+        for i in range(4):
+            try:
+                return loads(self.enc.decrypt(post(json={"api_version":"5","auth": self.auth,"data_enc":self.enc.encrypt(dumps({
+                  "method":"getGroupMentionList",
+                  "input":{
+                      "group_guid": guid,
+                      "search_mention":'null'
+                      },
+                    "client": clients.web
+                }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))["data"]
+            except: pass
+    def sendMention(self, object_guid: str, text: str, user_guids: list, modes: list, message_id=None) -> dict :
+        """ send Mention for tag user:  bot.sendMention('group-GUID', text='hello from send metion rubx library', user_guids=['guid'], modes=['User', 'Channel'], message_id='28333444') """
+        for i in range(4):
+            try:
+                data: list = []
+                if len(user_guids) >= 1 :
+                    for i in range(len(user_guids)) : data.append({"type":"MentionText", "mention_text_object_guid": user_guids[i], "from_index":0, "length": 12, "mention_text_object_type": modes[i]})
+                return loads(self.enc.decrypt(post(json={"api_version":"5","auth": self.auth,"data_enc":self.enc.encrypt(dumps({
+                  "method":"sendMessage",
+                  "input":{
+                      "object_guid": object_guid,
+                      "rnd": str(randint(100000,999999999)),
+                      "text": text,
+                      'reply_to_message_id': message_id,
+                      "metadata":{
+                          "meta_data_parts": data
+                          }
+                      },
+                    "client": clients.web
+                }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))["data"]
+            except: pass
+    def getContactsUpdates(self, state='0') -> dict :
+        for i in range(4):
+            try :
+                return loads(self.enc.decrypt(post(json={"api_version":"5","auth": self.auth,"data_enc":self.enc.encrypt(dumps({
+                  "method":"getContactsUpdates",
+                  "input":{
+                      "state": state
+                      },
+                    "client": clients.web
+                }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))["data"]
+            except : pass
+    def addFolder(self, name: str, include_chat_types: list, exclude_chat_types=None, include_object_guids=None, exclude_object_guids=None) -> dict :
+        """ name = name folder, include_chat_types = ['Contacts', ...], ... """
+        for i in range(4) :
+            try :
+                return loads(self.enc.decrypt(post(json={"api_version":"5","auth": self.auth,"data_enc":self.enc.encrypt(dumps({
+                  "method":"addFolder",
+                  "input":{
+                      "name": name,
+                      "include_chat_types": include_chat_types,
+                      "exclude_chat_types": exclude_chat_types,
+                      "include_object_guids": include_object_guids,
+                      "exclude_object_guids": exclude_object_guids,
+                      "is_add_to_top":'true'},
+                    "client": clients.web
+                }))},url=Robot._getURL(), timeout=5, proxies=self.proxy).json()["data_enc"]))["data"]
+            except : pass
 class Socket:
-    data = {"error":[],"messages":[]}
-    def __init__(self, auth):
+    data: dict = {"error":[],"messages":[]}
+    def __init__(self, auth) -> None :
         self.auth = auth; self.enc = encryption(auth)
-    def on_open(self, ws):
+    def on_open(self, ws, api_version='4') -> None :
         def handShake(*args):
             ws.send(dumps({
-                "api_version": "4",
+                "api_version": api_version,
                 "auth": self.auth,
                 "data_enc": "",
-                "method": "handShake"
-            }))
-        import _thread
-        _thread.start_new_thread(handShake, ())
-    def on_error(self, ws, error):
-        Socket.data["error"].append(error)
-    def on_message(self, ws, message):
+                "method": "handShake"}))
+        import _thread; _thread.start_new_thread(handShake, ())
+    def on_error(self, error) -> None : Socket.data["error"].append(error)
+    def on_message(self, message) -> None :
         try: parsedMessage = loads(message); Socket.data["messages"].append({"type": parsedMessage["type"], "data": loads(self.enc.decrypt(parsedMessage["data_enc"]))})
         except KeyError: pass
-    def on_close(self, ws, code, msg):
-        return {"code": code, "message": msg}
-    def handle(self, OnOpen=None, OnError=None, OnMessage=None, OnClose=None, forEver=True):
-        import websocket
-        ws = websocket.WebSocketApp(
+    def on_close(self, code, msg) -> None : return {"code": code, "message": msg}
+    def handle(self, OnOpen=None, OnError=None, OnMessage=None, OnClose=None, forEver=True) -> None :
+        from websocket import WebSocketApp
+        ws = WebSocketApp(
             "wss://jsocket3.iranlms.ir:80",
             on_open=OnOpen or Socket(self.auth).on_open,
             on_message=OnMessage or Socket(self.auth).on_message,
             on_error=OnError or Socket(self.auth).on_error,
-            on_close=OnClose or Socket(self.auth).on_close
-        )
+            on_close=OnClose or Socket(self.auth).on_close)
         if forEver : ws.run_forever()
-class Set:
-    def __init__(auth: str, mode: str, password=None, newpassword=None, hint=None, newhint=None):
+
+class Set :
+    def __init__(auth: str, mode: str, password=None, newpassword=None, hint=None, newhint=None) -> None :
         '''set password to account: modes:  1, 2, 3  and  1 = changePassword or new password  and  2 = createPassword,  and 3 = off password :)'''
         bot = Robot(auth=auth)
-        if mode == '1':
-            bot.getTwoPasscodeStatus()
-            bot.checkTwoStepPasscode(str(password))
-            bot.changePassword(str(password), str(newpassword), str(newhint))
-        elif mode == '2':
-            bot.setupTwoStepVerification(str(password), str(hint))
-        else:
-            bot.turnOffTwoStep(str(password))
+        if mode == '1' : bot.getTwoPasscodeStatus(); bot.checkTwoStepPasscode(str(password)); bot.changePassword(str(password), str(newpassword), str(newhint))
+        elif mode == '2' : bot.setupTwoStepVerification(str(password), str(hint))
+        else : bot.turnOffTwoStep(str(password))
