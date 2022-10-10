@@ -54,7 +54,7 @@ defaultDevice: dict = {
 }
 citys, proxys, auth_, sent = [], [], [], (lambda data: ['error' if data['status'].lower() != 'ok' else 'yeah'])
 class Robot :
-    def __init__(self, app='rubx', phone_number=None, auth=None, device=defaultDevice, proxy={'http':'http://127.0.0.1:9050'}, your_name='rubx', city='tehran', logo=True) -> None :
+    def __init__(self, auth=None, app='rubx', phone_number=None, device=defaultDevice, proxy={'http':'http://127.0.0.1:9050'}, your_name='rubx', city='tehran', logo=True) -> None :
         self.app = app; citys.append(city); self.proxy = proxy; proxys.append(proxy)
         if logo != False : [(print(s, flush=True, end=''), sleep(0.01)) for s in f'\n\033[0m< \033[31mrubx \033[0m> \033[36m | \033[31mstarted in \033[0m{str(datetime.datetime.now())}\n']
         if your_name != None :
@@ -63,14 +63,12 @@ class Robot :
                 with open('library-info.txt', 'w+') as f: f.write('name fan: '+your_name+'\ntime started: '+str(datetime.datetime.now())+'\nyour ip: '+str(get('https://api.ipify.org').text))
             except : pass
         try:
-            if auth == None:
+            if auth == None :
                 with open(f"{app}.json", "r") as account :
-                    account = loads(account.read())
-                    self.auth = account["data"]["auth"]; auth_.append(self.auth)
+                    account = loads(account.read()); self.auth = account["data"]["auth"]; auth_.append(self.auth)
             else: raise FileNotFoundError('file not find')
         except FileNotFoundError :
-                if auth != None :
-                    self.auth = auth; auth_.append(auth)
+                if auth != None : self.auth = auth; auth_.append(auth)
                 elif phone_number != None :
                     try:
                         code = Robot.sendCode(phone_number, 'Internal')["data"]["phone_code_hash"]; account = Robot.signIn(phone_number, code, input("please enter activation code : "))
