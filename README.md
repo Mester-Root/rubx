@@ -1,3 +1,5 @@
+![Rubika](https://raw.githubusercontent.com/Mester-Root/rubx/main/logo.png)
+
 
 ## rubx
 
