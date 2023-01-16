@@ -25,8 +25,6 @@ ___________________________
 
 ## INSTALLING
 
-![installed :) ](https://raw.githubusercontent.com/Mester-Root/rubx/main/2022-08-06%20(3).png)
-
 ```bash
 pip install rubx
 ```
