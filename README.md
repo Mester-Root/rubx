@@ -19,6 +19,21 @@ with RubinoClient('session') as app:
     app.create_page(...)
 ```
 
+## HANDLER
+
+```python
+from rb import Handler, EventBuilder, Filters
+
+client = Handler('session')
+
+# funcs: HandShake, ChatsUpdates, MessagesUpdates
+# to set chat_id: chat_ids=['u0...',]
+client.add_event_handling(func='ChatsUpdates', events=dict(get_chats=True, get_messages=True, pattern=('/start', 'Hello from rubx lib.')))
+
+@client.handler
+def hello(app, message: EventBuilder, event):
+    message.respond(message.pattern, Filters.author)
+```
 ### douc coming soon ...
 
 ___________________________
