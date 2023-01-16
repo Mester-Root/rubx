@@ -9,9 +9,9 @@ from requests import get
 from rb import StartClient as Client
 
 # inserts
-session     =   'wasyvwfxnrizqmtiawhryopqlbkomqcj' # account key
-admins      =   ['@TheServer', ] # admin id
-creators    =   ['u0D1yES005f85d6a3f792e1364e52e71', ] # creator guid
+session     =   '' # account key
+admins      =   ['@username', ] # admin id
+creators    =   ['u0...', ] # creator guid
 
 # file paths
 MESSAGE_IDS = 'msgs.txt'
