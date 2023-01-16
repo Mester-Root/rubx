@@ -58,14 +58,19 @@ _______________________
 
 _______________________
 
-<div align="center">
+
 ![issues](https://img.shields.io/github/issues/mester-root/rubx)
+
 ![forks](https://img.shields.io/github/forks/mester-root/rubx)
+
 ![version](https://img.shields.io/badge/version-v--1.0.1--beta-yellow)
+
 ![stars](https://img.shields.io/github/stars/mester-root/rubx)
+
 ![license](https://img.shields.io/github/license/mester-root/rubx)
+
 ![icon](https://raw.githubusercontent.com/Mester-Root/rubx/main/logo.png)
-</div>
+
 _______________________
 
 # view in github :
