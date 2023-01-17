@@ -55,11 +55,7 @@ pip install rubx --upgrade
     - saleh | rubika.ir/TheServer
 
 
-# rubika client with python3 module RUBX ![](https://i.imgur.com/fe85aVR.png)
-
-## rubika library !
-
-# self for account
+# rubika client self with python3 RUBX module ![](https://i.imgur.com/fe85aVR.png)
 
 _______________________
 
@@ -69,7 +65,7 @@ _______________________
 
 [![creator: ](https://img.shields.io/badge/Telegram-Channel-33A8E3)](https://t.me/rubx_library)
 
-[![Telegram](https://img.shields.io/badge/-telegram-red?color=white&logo=telegram&logoColor=black)](https://t.me/creator_ryson)
+[![Telegram](https://img.shields.io/badge/-telegram-red?color=white&logo=telegram&logoColor=black)](https://t.me/ClientUser)
 
 _______________________
 
@@ -83,8 +79,6 @@ _______________________
 ![stars](https://img.shields.io/github/stars/mester-root/rubx)
 
 ![license](https://img.shields.io/github/license/mester-root/rubx)
-
-![icon](https://raw.githubusercontent.com/Mester-Root/rubx/main/logo.png)
 
 _______________________
 
