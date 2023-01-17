@@ -98,4 +98,4 @@ __01110010011101010110001001111000__
 
 مثال هایی که میتوانید استفاده کنید:
 
-[![EXAMPLES](https://i.imgur.com/fe85aVR.png)](https://github.com/Mester-Root/rubx/tree/main/Examples)
+[![EXAMPLES](https://raw.githubusercontent.com/Mester-Root/rubx/main/example.png)](https://github.com/Mester-Root/rubx/tree/main/Examples)
