@@ -119,19 +119,12 @@ _______________________
 
 ![license](https://img.shields.io/github/license/mester-root/rubx)
 
-_______________________
-
-# view in github :
-
-[![library](https://img.shields.io/puppetforge/mc/python?color=blue&label=RUBX&logo=RUBX&logoColor=red)](https://github.com/Mester-Root/rubx)
-
 ________________________
 
 ### the **special**:
 - *[RUBX] > a library or module 'official' for rubika messnger with client server from iran ! for all .*
-- *[RUBX] > full method and all methods rubika !*
-- *[RUBX] > use api's rubika for you .*
-- *[RUBX] >> joining in anjoman group: https://rubika.ir/programmers_info/CGAJIFHEIBGFCGD)*
+- *[RUBX] > full method *
+- *[RUBX] > rubika api's method for you .
 __01110010011101010110001001111000__
 
 
