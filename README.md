@@ -147,7 +147,7 @@ _______________________
 
 [![creator: ](https://img.shields.io/badge/Telegram-Channel-33A8E3)](https://t.me/rubx_library) | [![Telegram](https://img.shields.io/badge/-telegram-red?color=white&logo=telegram&logoColor=black)](https://t.me/ClientUser)
 
-![issues](https://img.shields.io/github/issues/mester-root/rubx) | ![forks](https://img.shields.io/github/forks/mester-root/rubx)
+![issues](https://img.shields.io/github/issues/mester-root/rubx)      | ![forks](https://img.shields.io/github/forks/mester-root/rubx)
 
 ![stars](https://img.shields.io/github/stars/mester-root/rubx)   | ![license](https://img.shields.io/github/license/mester-root/rubx)
 
