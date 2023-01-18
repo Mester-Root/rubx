@@ -74,7 +74,7 @@ def update(event: EventBuilder):
 
 ```
 
-### douc coming soon ...
+### docs coming soon ...
 
 ___________________________
 
