@@ -115,13 +115,11 @@ Rubx
 
   - ⭐️ Thanks **everyone** who has starred the project, it means a lot!
 
-**Rubx** is an sync_ **Python 3** rubika_ library to interact with Rubika_'s API
+**Rubx** is an sync **Python 3** rubika library to interact with Rubika_'s API
 as a user or through a bot account (self API alternative).
 
-.. important::
-
-    If you have code using Rubx before its 1.0 version, you must
-    read `Compatibility and Convenience`_ to learn how to migrate.
+    - If you have code using Rubx before its 1.0 version, you must
+    - read Compatibility and Convenience to learn how to migrate.
 
 What is this?
 -------------
