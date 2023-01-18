@@ -1,7 +1,7 @@
 ![Rubika](https://raw.githubusercontent.com/Mester-Root/rubx/main/logo.png)
 
 
-# Rubx
+# Rubx | 🔶
 ### Rubika
 
 
@@ -110,7 +110,7 @@ pip install rubx --upgrade
 
 _____________________________
 
-Rubx
+Rubx - ⚡
 ========
 
   - Now the best ‍`sync‍` library for Rubik's was developed
@@ -119,7 +119,7 @@ Rubx
 **Rubx** is an sync **Python 3** rubika library to interact with Rubika's API
 as a user or through a bot account (self API alternative).
 
-    If you have code using Rubx before its 8.0.5 version, you must
+    🔴 If you have code using Rubx before its 8.0.5 version, you must
     read docs to learn how to migrate.
 
 What is this?
@@ -133,7 +133,7 @@ This module provides all the desired methods with a very simple and beautiful us
 Give your employer the best experience of a project.
 
 
-Updating
+Updating - 🌀
 --------
 The next updates include `async`, complete documentation and optimization.
 
@@ -172,7 +172,7 @@ ________________________
 
 
 _________
-مثال هایی که میتوانید استفاده کنید:
+مثال هایی که میتوانید استفاده کنید: - ✅
 -------
 
 [![EXAMPLES](https://raw.githubusercontent.com/Mester-Root/rubx/main/example.png)](https://github.com/Mester-Root/rubx/tree/main/Examples)
