@@ -74,7 +74,7 @@ def update(event: EventBuilder):
 
 ```
 
-## Or
+### Or
 
 ```python
 from rb import Handler, Filters
