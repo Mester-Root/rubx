@@ -1,11 +1,11 @@
 ![Rubika](https://raw.githubusercontent.com/Mester-Root/rubx/main/logo.png)
 
 
-# Rubx | 🔶
-### Rubika
+# Rubx | 🔶 | روبیکس
+### Rubika | روبیکا
 
 
-## Messenger:
+## Messenger - مثال پیامرسان:
 
 ```python
 
@@ -33,7 +33,7 @@ with Client(...) as client:
         )
 ```
 
-## Rubino
+## Rubino | مثال کلاینت روبینو
 
 ``` python
 
@@ -44,7 +44,7 @@ with RubinoClient('session') as client:
 
 ```
 
-## Handler
+## Handler | هندلر
 #### Handler Examples
 
 ```python
@@ -92,13 +92,13 @@ client.command_handler(event)
 
 ___________________________
 
-## INSTALLING
+## INSTALLING | نصب
 
 ```bash
 pip install rubx
 ```
 
-## UPGRADE
+## UPGRADE | بروز رسانی
 
 ```
 pip install rubx --upgrade
