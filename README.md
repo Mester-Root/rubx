@@ -120,12 +120,12 @@ Rubx - ⚡
 as a user or through a bot account (self API alternative).
 
     🔴 If you have code using Rubx before its 8.0.5 version, you must
-    read docs to learn how to migrate.
+    read docs to learn how to migrate. 💡
 
 What is this?
 -------------
 
-Rubika is a popular messaging application. This library is meant
+🇮🇷 - Rubika is a popular messaging application. This library is meant
 to make it easy for you to write Python programs that can interact
 with Rubika. Think of it as a wrapper that has already done the
 heavy job for you, so you can focus on developing an application.
