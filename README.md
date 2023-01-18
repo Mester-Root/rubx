@@ -113,8 +113,6 @@ _______________________
 
 ![forks](https://img.shields.io/github/forks/mester-root/rubx)
 
-![version](https://img.shields.io/badge/version-v--1.0.1--beta-yellow)
-
 ![stars](https://img.shields.io/github/stars/mester-root/rubx)
 
 ![license](https://img.shields.io/github/license/mester-root/rubx)
@@ -123,9 +121,8 @@ ________________________
 
 ### the **special**:
 - *[RUBX] > a library or module 'official' for rubika messnger with client server from iran ! for all .*
-- *[RUBX] > full method *
-- *[RUBX] > rubika api's method for you .
-__01110010011101010110001001111000__
+- *[RUBX] > full method .*
+- *[RUBX] > rubika api's method for you .*
 
 
 مثال هایی که میتوانید استفاده کنید:
