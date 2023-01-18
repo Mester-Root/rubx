@@ -138,7 +138,7 @@ Updating - 🌀
 The next updates include `async`, complete documentation and optimization.
 
 
-# rubika client self with python3 RUBX module ![](https://i.imgur.com/fe85aVR.png)
+# rubika client self with python3 | RUBX module ![](https://i.imgur.com/fe85aVR.png)
 
 
 _______________________
