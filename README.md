@@ -175,4 +175,4 @@ _________
 مثال هایی که میتوانید استفاده کنید:
 -------
 
-    - go to: [![EXAMPLES](https://raw.githubusercontent.com/Mester-Root/rubx/main/example.png)](https://github.com/Mester-Root/rubx/tree/main/Examples)
+[![EXAMPLES](https://raw.githubusercontent.com/Mester-Root/rubx/main/example.png)](https://github.com/Mester-Root/rubx/tree/main/Examples)
