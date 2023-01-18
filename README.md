@@ -113,7 +113,7 @@ pip install rubx --upgrade
 Rubx
 ========
 
-  - Now the best ‍sync‍ library for Rubik's was developed
+  - Now the best ‍`sync‍` library for Rubik's was developed
   - ⭐️ Thanks **everyone** who has starred the project, it means a lot!
 
 **Rubx** is an sync **Python 3** rubika library to interact with Rubika's API
@@ -131,6 +131,11 @@ with Rubika. Think of it as a wrapper that has already done the
 heavy job for you, so you can focus on developing an application.
 This module provides all the desired methods with a very simple and beautiful user interface and has a very high speed.
 Give your employer the best experience of a project.
+
+
+Updating
+--------
+The next updates include `async`, complete documentation and optimization.
 
 
 # rubika client self with python3 RUBX module ![](https://i.imgur.com/fe85aVR.png)
