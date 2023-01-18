@@ -1,39 +1,78 @@
 ![Rubika](https://raw.githubusercontent.com/Mester-Root/rubx/main/logo.png)
 
 
-## rubx
+# Rubx
 
-# EXAMPLES :
+
+## Messenger:
 
 ```python
+
 from rb import StartClient 
+
 with StartClient('session') as client:
-   client.send_message('Hey from rubx', 'chat-guid')
+   client.send_message('**Hey** __from__ ``rubx``', 'chat-guid')
+
 ```
 
-## OR
+### Or
+
+```python
+from rb import StartClient as Client
+
+def respond(callable, params) -> dict:
+    return callable(**params)
+
+with Client(...) as client:
+    print(
+        respond(
+            client.send_message,
+            dict(chat_id=..., text='Hey')
+            )
+        )
+```
+
+## Rubino
 
 ``` python
+
 from rb import RubinoClient
+
 with RubinoClient('session') as app:
     app.create_page(...)
+
 ```
 
-## HANDLER
+## Handler
 
 ```python
 from rb import Handler, EventBuilder, Filters
 
-client = Handler('session')
+client = Handler(...)
 
-# funcs: HandShake, ChatsUpdates, MessagesUpdates
-# to set chat_id: chat_ids=['u0...',]
-client.add_event_handling(func='ChatsUpdates', events=dict(get_chats=True, get_messages=True, pattern=('/start', 'Hello from rubx lib.')))
+# handlers: HandShake, ChatsUpdates, MessagesUpdates
+client.add_event_handling(func='ChatsUpdates', events=dict(get_chats=True, get_messages=True, pattern=('/start', 'Hey from rubx lib.')))
 
 @client.handler
 def hello(app, message: EventBuilder, event):
-    message.respond(message.pattern, Filters.author)
+    # to print message: print(message) or print(event)
+    # to use all methods: app.create_objcet_voice_chat(...)
+    message.respond(message.pattern, Filters.author) # filters: chat, group, channel, author
 ```
+
+### Or
+
+```python
+from rb import Handler, NewMessage, Filters, EventBuilder
+
+client = Handler(...)
+
+@client.on(NewMessage(client.handle, handle_name='ChatsUpdates'))
+def update(event: EventBuilder):
+    ... # event.respond('Hey', Filters.chat)
+
+```
+
 ### douc coming soon ...
 
 ___________________________
