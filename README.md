@@ -90,8 +90,6 @@ client.start = True
 client.command_handler(event)
 ```
 
-### docs coming soon ...
-
 ___________________________
 
 ## INSTALLING
@@ -109,6 +107,8 @@ pip install rubx --upgrade
 
 ## CREATED BY:
     - saleh | rubika.ir/TheServer
+
+_____________________________
 
 Rubx
 ========
@@ -140,6 +140,7 @@ The next updates include `async`, complete documentation and optimization.
 
 # rubika client self with python3 RUBX module ![](https://i.imgur.com/fe85aVR.png)
 
+
 _______________________
 
 [![Python 3|2.7|3.x](https://img.shields.io/badge/python-3|3.0|3.x-yellow.svg)](https://www.python.org/)
@@ -163,12 +164,15 @@ _______________________
 
 ________________________
 
-### the **special**:
+
+## the **special**:
 - *[RUBX] > a library or module 'official' for rubika messnger with client server from iran ! for all .*
 - *[RUBX] > full method .*
 - *[RUBX] > rubika api's method for you .*
 
 
+_________
 مثال هایی که میتوانید استفاده کنید:
+-------
 
-[![EXAMPLES](https://raw.githubusercontent.com/Mester-Root/rubx/main/example.png)](https://github.com/Mester-Root/rubx/tree/main/Examples)
+    - go to: [![EXAMPLES](https://raw.githubusercontent.com/Mester-Root/rubx/main/example.png)](https://github.com/Mester-Root/rubx/tree/main/Examples)
