@@ -11,7 +11,7 @@
 from rb import StartClient 
 
 with StartClient('session') as client:
-   client.send_message('**Hey** __from__ ``rubx``', 'chat-guid')
+   client.send_message('Hey from rubx', 'chat-guid')
 
 ```
 
