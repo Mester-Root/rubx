@@ -110,6 +110,30 @@ pip install rubx --upgrade
 ## CREATED BY:
     - saleh | rubika.ir/TheServer
 
+Rubx
+========
+.. epigraph::
+
+  ⭐️ Thanks **everyone** who has starred the project, it means a lot!
+
+|logo| **Rubx** is an sync_ **Python 3** rubika_ library to interact with Rubika_'s API
+as a user or through a bot account (self API alternative).
+
+.. important::
+
+    If you have code using Rubx before its 1.0 version, you must
+    read `Compatibility and Convenience`_ to learn how to migrate.
+
+What is this?
+-------------
+
+Rubika is a popular messaging application. This library is meant
+to make it easy for you to write Python programs that can interact
+with Rubika. Think of it as a wrapper that has already done the
+heavy job for you, so you can focus on developing an application.
+This module provides all the desired methods with a very simple and beautiful user interface and has a very high speed.
+Give your employer the best experience of a project.
+
 
 # rubika client self with python3 RUBX module ![](https://i.imgur.com/fe85aVR.png)
 
