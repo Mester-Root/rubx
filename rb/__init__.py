@@ -4992,6 +4992,7 @@ class Handler(Client):
             def update(app, message, event):
                 func(message)
         if (self.start):
+            self.__appender(action='create')
             updater()
 
     def on(self, event) -> (typing.Union[object, None]):
