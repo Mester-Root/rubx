@@ -74,6 +74,21 @@ def update(event: EventBuilder):
 
 ```
 
+## Or
+
+```python
+from rb import Handler, Filters
+
+client = Handler('session')
+
+def event(message):
+    message.respond(message.pattern, Filters.author)
+        
+client.add_event_handling('ChatsUpdates', event=dict(get_chats=True, get_messages=True, pattern=('/start', 'Hi from rubx lib.')))
+client.start = True
+client.command_handler(event)
+```
+
 ### docs coming soon ...
 
 ___________________________
