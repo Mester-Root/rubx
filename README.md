@@ -45,6 +45,7 @@ with RubinoClient('session') as client:
 ```
 
 ## Handler
+#### Handler Examples
 
 ```python
 from rb import Handler, EventBuilder, Filters
