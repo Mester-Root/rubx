@@ -38,8 +38,8 @@ with Client(...) as client:
 
 from rb import RubinoClient
 
-with RubinoClient('session') as app:
-    app.create_page(...)
+with RubinoClient('session') as client:
+    client.create_page(...)
 
 ```
 
