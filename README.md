@@ -112,11 +112,10 @@ pip install rubx --upgrade
 
 Rubx
 ========
-.. epigraph::
 
-  ⭐️ Thanks **everyone** who has starred the project, it means a lot!
+  - ⭐️ Thanks **everyone** who has starred the project, it means a lot!
 
-|logo| **Rubx** is an sync_ **Python 3** rubika_ library to interact with Rubika_'s API
+**Rubx** is an sync_ **Python 3** rubika_ library to interact with Rubika_'s API
 as a user or through a bot account (self API alternative).
 
 .. important::
