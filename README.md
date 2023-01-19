@@ -90,6 +90,20 @@ client.start = True
 client.command_handler(event)
 ```
 
+## to using HandShake(WebSocket):
+
+```python
+from rb import Handler, EventBuilder, Filters
+
+client = Handler('abc...', 'u0...')
+client.add_event_handling(func='HandShake', events=dict(get_messages=True, get_chats=False))
+@client.handler
+def update(app, update, event):
+    if update.message.text == '/start':
+        message.reply(text='Hello my dear', chat_id=update.message.author_object_guid, reply_to_message_id=update.message.message_id)
+        # or using repond: message.respond('Hey!', Filters.author)
+```
+
 ___________________________
 
 ## INSTALLING | نصب
