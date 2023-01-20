@@ -48,12 +48,12 @@ with RubinoClient('session') as client:
 #### Handler Examples
 
 ```python
-from rb import Handler, EventBuilder, Filters
+from rb import Handler, EventBuilder, Filters, Performers
 
 client = Handler(...)
 
 # handlers: HandShake, ChatsUpdates, MessagesUpdates
-client.add_event_handling(func='ChatsUpdates', events=dict(get_chats=True, get_messages=True, pattern=('/start', 'Hey from rubx lib.')))
+client.add_event_handling(func=Performers.chats_updates, events=dict(get_chats=True, get_messages=True, pattern=('/start', 'Hey from rubx lib.')))
 
 @client.handler
 def hello(app, message: EventBuilder, event):
@@ -65,11 +65,11 @@ def hello(app, message: EventBuilder, event):
 ### Or
 
 ```python
-from rb import Handler, NewMessage, Filters, EventBuilder
+from rb import Handler, NewMessage, Filters, EventBuilder, Performers
 
 client = Handler(...)
 
-@client.on(NewMessage(client.handle, handle_name='ChatsUpdates'))
+@client.on(NewMessage(client.handle, handle_name=Performers.chats_updates))
 def update(event: EventBuilder):
     ... # event.respond('Hey', Filters.chat)
 
@@ -78,14 +78,14 @@ def update(event: EventBuilder):
 ### Or
 
 ```python
-from rb import Handler, Filters
+from rb import Handler, Filters, Performers
 
 client = Handler('session')
 
 def event(message):
     message.respond(message.pattern, Filters.author)
         
-client.add_event_handling('ChatsUpdates', event=dict(get_chats=True, get_messages=True, pattern=('/start', 'Hi from rubx lib.')))
+client.add_event_handling(func=Performers.chats_updates, event=dict(get_chats=True, get_messages=True, pattern=('/start', 'Hi from rubx lib.')))
 client.start = True
 client.command_handler(event)
 ```
@@ -93,10 +93,10 @@ client.command_handler(event)
 ## to using HandShake(WebSocket):
 
 ```python
-from rb import Handler, EventBuilder, Filters
+from rb import Handler, EventBuilder, Filters, Performers
 
 client = Handler('abc...', 'u0...')
-client.add_event_handling(func='HandShake', events=dict(get_messages=True, get_chats=False))
+client.add_event_handling(func=Performers.hand_shake, events=dict(get_messages=True, get_chats=False))
 @client.handler
 def update(app, update, event):
     if update.message.text == '/start':
