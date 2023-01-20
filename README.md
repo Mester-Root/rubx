@@ -127,7 +127,7 @@ _____________________________
 Rubx - ⚡
 ========
 
-  - Now the best ‍`sync‍` library for Rubik's was developed
+  - Now the best ‍`sync‍` library for Rubika's was developed
   - ⭐️ Thanks **everyone** who has starred the project, it means a lot!
 
 **Rubx** is an sync **Python 3** rubika library to interact with Rubika's API
