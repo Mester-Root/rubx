@@ -75,11 +75,12 @@ __all__ = [
     ]
 
 class Version(str):
-    __version__ =   '10.3.1'
+    __version__ =   '10.3.3'
     __author__  =   'saleh'
     __lisense__ =   'MIT'
 
 __version__ = Version.__version__
+
 
 class RubikaClient(object):
 
@@ -104,7 +105,9 @@ class RubikaClient(object):
         lang_code           :   (str)                               =   ('fa'),
         base_logger         :   (typing.Union[str, logging.Logger]) =   (None),
         check_session       :   (bool)                              =   (False),
-        api_client          :   (str)                               =   (None)
+        api_client          :   (str)                               =   (None),
+        *args,
+        **kwargs
         ) -> (None):
         
         '''
@@ -267,6 +270,17 @@ class RubikaClient(object):
         Connection.timeout: int = timeout or 5
         clients.web.update({'lang_code': self.lang_code or 'en'}) # TODO: to set lang_code in rubx and android clients
         
+        if headers:
+            Connection.headers = headers
+        if api_version:
+            Connection.api_version = api_version
+        if self.platform:
+            Connection.platform = platform
+        if city:
+            Connection.city = city
+        if proxy:
+            Connection.proxy = proxy
+    
     def __call__(self) -> (None):
         pass
 
@@ -620,6 +634,7 @@ class NewMessage(Client):
         commands    :   dict  =   None, 
         gets        :   tuple =   None,
         handle_name :   str   =   'handshake',
+        *args
         ) -> (None):
         
         '''
@@ -1009,3 +1024,34 @@ class StartClient(
     ChannelMethods
     ): # TODO: add all methods
     pass
+
+# To use the async for methods
+# TODO: set handler with async.
+class BaseClient(StartClient):
+
+    def __init__(self, *args):
+
+        '''
+        from rb import BaseClient
+
+        async def run(*args):
+            async with BaseClient(...) as client:
+                await client.start(client.send_message, 'Hey! from rubx', 'chat-guid')
+        
+        BaseClient.run(run)
+        '''
+
+        super().__init__(*args)
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, *args, **kwargs) -> (None):
+        pass
+
+    async def start(self, method: object, *args, **kwargs) -> (dict):
+        return method(*args, **kwargs)
+    
+    @staticmethod
+    def run(func: object, *args) -> (None):
+        __import__('asyncio').run(func())
