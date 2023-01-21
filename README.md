@@ -160,9 +160,9 @@ This module provides all the desired methods with a very simple and beautiful us
 Give your employer the best experience of a project.
 
 
-Updating - 🌀
+Updating - 🌀 :
 --------
-The next updates include `async`, complete documentation and optimization.
+   - The complete documentation and optimization.
 
 
 # rubika client self with python3 | RUBX module ![](https://i.imgur.com/fe85aVR.png)
