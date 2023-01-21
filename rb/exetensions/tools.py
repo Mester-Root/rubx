@@ -1,6 +1,8 @@
+#!/bin/python
+
 # the tools version
 
-#from imports import StartClient, UserMethods
+#from . import StartClient, UserMethods
 
 class Clean(str):
     
