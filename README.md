@@ -9,7 +9,7 @@
 
 ```python
 
-from rb import StartClient 
+from rb import StartClient # rb: is main package
 
 with StartClient('session') as client:
    client.send_message('**Hey** __from__ ``rubx``', 'chat-guid')
@@ -102,6 +102,19 @@ def update(app, update, event):
     if update.message.text == '/start':
         message.reply(text='Hello my dear', chat_id=update.message.author_object_guid, reply_to_message_id=update.message.message_id)
         # or using repond: message.respond('Hey!', Filters.author)
+```
+
+## Async methods
+
+```python
+from rb import BaseClient # BaseClient: asycn reader
+
+async def run(*args):
+    async with BaseClient(...) as client:
+        result = await client.start(client.send_message, 'Hey! from rubx', 'chat-guid')
+        print(result)
+
+BaseClient.run(run)
 ```
 
 ___________________________
