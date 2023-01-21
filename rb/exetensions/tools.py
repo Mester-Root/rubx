@@ -38,7 +38,7 @@ class Maker(object):
 
     @staticmethod
     def check_link(link: str, key: str) -> (str):
-        
+        from rb import StartClient
         with StartClient(key) as client:
             
             if link.startswith('@') or search(r'rubika\.ir/\w{4,25}', link):
@@ -59,6 +59,7 @@ class Login(object):
 
     @staticmethod
     def SignIn(phone: str) -> (str):
+        from rb import StartClient
         return UserMethods.sign_in(phone, UserMethods.send_code(phone, input('send type is SMS/Interval : '), password=input('please enter your password : ') if input('insert password y/n : ').lower() == 'y' else None).get('data').get('phone_code_hash'), input('please enter activation code : ')).get('data').get('auth') or '0'
 
 class __Top(object):
