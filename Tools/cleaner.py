@@ -11,7 +11,7 @@ class ProfanitiesFilter(object):
         replacements: str = "$@%-?!",
         complete: bool = True,
         inside_words: bool = False
-        ) -> (...):
+        ) -> None:
 
         self.badwords, self.ignore_case, self.replacements, self.complete, self.inside_words = filterlist, ignore_case, replacements, complete, inside_words
 
