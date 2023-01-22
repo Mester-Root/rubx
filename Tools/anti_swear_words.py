@@ -1,3 +1,6 @@
+#!/bin/python
+# anti bad words
+
 from re import search
 
 finder = lambda text, filters: any(bool(search(string, text)) for string in filters)
