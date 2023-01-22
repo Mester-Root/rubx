@@ -33,6 +33,21 @@ with Client(...) as client:
         )
 ```
 
+### Or
+
+## shorcuts | مثالی از چند میانبر
+
+```python
+from rb import StartClient
+
+with StartClient(...) as client:
+    print(client == dict(text='Hey', chat_id='chat-guid')) # to send message
+    # print(client * 'chat-guid') # to get chat info
+
+```
+
+#### برای دیدن میانبر های کامل به مستندات ماژول مراجعه کنید.
+
 ## Rubino | مثال کلاینت روبینو
 
 ``` python
