@@ -1,3 +1,5 @@
+#!/bin/python
+
 from requests import get
 from pathlib import Path
 from random import choice, randint, sample
@@ -17,23 +19,15 @@ Client = 'RubikaClient'
 
 class ChannelMethods:
     
-    def __enter__(
-        self    :   (
-            'Client'
-            )
-        ):
-        return (
-            self
-            )
+    def __enter__(self):
+        return (self)
 
     def __exit__(
-        self    :   (
-            'Client'
-            ),
+        self,
         *args,
         **kwargs
-        ) -> (...):
-        ...
+        ) -> (None):
+        pass
     
     set_channel_link        =   lambda self, chat_id: GetData.api(version=self.api_version or '5', method='setChannelLink', auth=self.auth, data={'channel_guid': chat_id}, mode=self.city, platform=self.platform or 'web', proxy=self.proxy)
     check_channel_username  =   lambda self, username: GetData.api(version=self.api_version or '5', method='checkChannelUsername', auth=self.auth, data={'username': username}, mode=self.city, platform=self.platform or 'web', proxy=self.proxy)
