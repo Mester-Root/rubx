@@ -19,7 +19,7 @@ def parser(text: str, echo: list = None, *args):
         if isinstance(mark, str):
             real: str = mark
         else:
-            list(map(lambda clean: results.extend([clean.offset, clean.length])))
+            list(map(lambda clean: results.extend([clean.offset, clean.length]), mark))
     else:
         return real, results
 
