@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 requires = ['requests', 'urllib3', 'datetime']
-version = '10.2.8'
+version = '10.3.4'
 
 readme = '''
 <p align="center">
@@ -24,7 +24,6 @@ readme = '''
     <a href="https://rubika.ir/TheClient">
         Rubika
     </a>
-     •
 </p>
 
 # روبیکس | روبیکا
@@ -35,10 +34,10 @@ readme = '''
 
 ```python
 
-from rb import StartClient 
+from rb import StartClient # rb: is main package
 
 with StartClient('session') as client:
-   client.send_message('Hello from rubx', 'chat-guid')
+   client.send_message('Hello From Rubx', 'chat-guid')
 
 ```
 
@@ -54,10 +53,31 @@ with Client(...) as client:
     print(
         respond(
             client.send_message,
-            dict(chat_id=..., text='Hey')
+            dict(
+                chat_id=...,
+                text='**Hey** @User@ R U __My__ ``Friend`` and ~~My Love~~'
+                mention_user_ids=['u0...]),
             )
         )
+    
+    # print(respond(client.send_message, dict(chat_id=..., sticker=True, emoji_character='😜', sticker_id=..., )))
 ```
+
+### Or
+
+## shorcuts | مثالی از چند میانبر
+
+```python
+from rb import StartClient
+
+with StartClient(...) as client:
+    print(client == dict(text='Hey', chat_id='chat-guid')) # to send message
+    # print(client * 'chat-guid') # to get chat info
+
+```
+
+#### برای دیدن میانبر های کامل به مستندات ماژول مراجعه کنید.
+
 
 ## Rubino
 
@@ -116,7 +136,7 @@ client.start = True
 client.command_handler(event)
 ```
 
-## to using HandShake(WebSocket):
+## To using HandShake(WebSocket):
 
 ```python
 from rb import Handler, EventBuilder, Filters, Performers
@@ -130,7 +150,47 @@ def update(app, update, event):
         # or using repond: message.respond('Hey!', Filters.author)
 ```
 
-### docs coming soon ...
+## Async methods
+
+```python
+from rb import BaseClient # BaseClient: asycn reader
+
+async def run(*args):
+    async with BaseClient(...) as client:
+        result = await client.start(client.send_message, 'Hey! from rubx', 'chat-guid')
+        print(result)
+
+BaseClient.run(run)
+```
+
+_____________________________
+
+Rubx - ⚡
+========
+
+  - Now the best ‍`sync‍` and `asycn` library for Rubika's was developed
+  - ⭐️ Thanks **everyone** who has starred the project, it means a lot!
+
+**Rubx** is an sync **Python 3** rubika library to interact with Rubika's API
+as a user or through a bot account (self API alternative).
+
+    🔴 If you have code using Rubx before its 8.0.5 version, you must
+    read docs to learn how to migrate. 💡
+
+What is this?
+-------------
+
+🇮🇷 - Rubika is a popular messaging application. This library is meant
+to make it easy for you to write Python programs that can interact
+with Rubika. Think of it as a wrapper that has already done the
+heavy job for you, so you can focus on developing an application.
+This module provides all the desired methods with a very simple and beautiful user interface and has a very high speed.
+Give your employer the best experience of a project.
+
+
+Updating - 🌀 :
+--------
+    - Complete documentation and optimization.
 
 ___________________________
 
@@ -193,9 +253,6 @@ ________________________
 - *[RUBX] > full method and all methods rubika !*
 - *[RUBX] > use api's rubika for you .*
 
-
-نیاز مندد حمایت و استار های شما :), از صفحه گیت هاب این پروژه دیدن کنید و استار بدید.
------
 '''
 
 setup(
