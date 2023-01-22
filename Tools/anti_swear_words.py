@@ -20,7 +20,8 @@ client = Handler('session')
 def event(update):
     if parse(update.message.text):
         message.delete()
-        # message.delete([update.message.message_id], update.group_guid)
+        # message.delete([update.message.message_id], update.object_guid)
+        # message.delete([update.message.message_id], update.message.author_object_guid)
 
 client.add_event_handling(Performers.hand_shake, event=dict(get_chats=False, get_messages=True))
 client.start = True
