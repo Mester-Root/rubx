@@ -30,11 +30,20 @@ class Errors:
 class ClientConnectorError(object):
     
     @classmethod
-    def __init__(cls, **kwargs: object) -> (...):
-        cls.set_error: ConnectError = kwargs.get('error')
-        cls.name: str = kwargs.get('name')
-        super().__init__(cls.name, cls.set_error)
+    def __init__(cls, **kwargs) -> None:
         
+        '''
+        class StorageError(OSError): pass
+        
+        error = ClientConnectorError(name='[StorageError] dont access to your device.', error=StorageError)
+        
+        print(error.returns)
+        error.warnings
+        error.raises
+        '''
+        
+        cls.set_error, cls.name = kwargs.get('error'), kwargs.get('name')
+
     @property
     def raises(cls) -> (Exception):
         raise cls.set_error(f'this error for {cls.name}')
@@ -42,6 +51,10 @@ class ClientConnectorError(object):
     @property
     def returns(cls) -> (str):
         return 'this error for %s please fixed and try again.' %  cls.name
+
+    @property
+    def warnings(cls) -> (str):
+        __import__('warnings').warn(cls.name)
 
 class Urls(str):
     
