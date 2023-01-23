@@ -43,7 +43,7 @@ from rb import StartClient
 with StartClient(...) as client:
     print(client == dict(text='Hey', chat_id='chat-guid')) # to send message
     # print(client * 'chat-guid') # to get chat info
-
+   # use the operators
 ```
 
 #### برای دیدن میانبر های کامل به مستندات ماژول مراجعه کنید.
