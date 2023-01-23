@@ -1053,4 +1053,4 @@ class BaseClient(StartClient):
         '''
         run main func to use
         '''
-        __import__('asyncio').run(func)
+        __import__('asyncio').run(func())
