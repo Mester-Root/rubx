@@ -1,4 +1,27 @@
-![Rubx](https://raw.githubusercontent.com/Mester-Root/rubx/main/icons/rubx-action.png)
+<p align="center">
+    <a href="https://github.com/mester-root/rubx">
+        <img src="https://raw.githubusercontent.com/Mester-Root/rubx/main/icons/rubx-action.png" alt="Rubx" width="128">
+    </a>
+    <br>
+    <b>Rubika API Framework for Python</b>
+    <br>
+    <a href="https://pypi.org/project/rubx">
+        Homepage
+    </a>
+    •
+    <a href="https://github.com/Mester-Root/rubx/tree/main/docs">
+        Documentation
+    </a>
+    •
+    <a href="https://github.com/Mester-Root/rubx/tree/main/Examples">
+        Examples
+    </a>
+    •
+    <a href="https://github.com/Mester-Root/rubx/tree/main/Tools">
+        Tools
+    </a>
+</p>
+
 
 
 # Rubx | 🔶 | روبیکس
