@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/mester-root/rubx">
-        <img src="https://raw.githubusercontent.com/Mester-Root/rubx/main/icons/rubx-action.png" alt="Rubx" width="128">
+        <img src="https://raw.githubusercontent.com/Mester-Root/rubx/main/icons/rubx-action.png" alt="Rubx" width="480">
     </a>
     <br>
     <b>Rubika API Framework for Python</b>
