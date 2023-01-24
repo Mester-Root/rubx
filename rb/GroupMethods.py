@@ -1,18 +1,18 @@
 #!/bin/python
 
-from requests import get
-from pathlib import Path
-from random import choice, randint, sample
-from re import findall, search, sub, compile, escape
-from time import sleep, gmtime, localtime
-from datetime import datetime
-from json import load, loads, dumps
-from .crypto import Encryption
-from .connection import GetData, Urls
-from .UserMethods import UserMethods
-from .clients import *
-from .errors import *
-from .extensions import *
+from requests       import get
+from pathlib        import Path
+from random         import choice, randint, sample
+from re             import findall, search, sub, compile, escape
+from time           import sleep, gmtime, localtime
+from datetime       import datetime
+from json           import load, loads, dumps
+from .crypto        import Encryption
+from .connection    import GetData, Urls
+from .UserMethods   import UserMethods
+from .clients       import *
+from .errors        import *
+from .extensions    import *
 import typing
 
 Client = 'RubikaClient'
