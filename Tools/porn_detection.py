@@ -16,4 +16,4 @@ def detection(image: str) -> tuple:
     else:  
         return False, 'this image does not contain porn content'
 
-print('*.jpg')
+print(detection('*.jpg'))
