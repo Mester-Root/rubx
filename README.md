@@ -236,11 +236,6 @@ ________________________
 
 _________
 
-مثال هایی که میتوانید استفاده کنید: - ✅
--------
 
-[![EXAMPLES](https://raw.githubusercontent.com/Mester-Root/rubx/main/example.png)](https://github.com/Mester-Root/rubx/tree/main/Examples)
-
-ورژن یکپارچه, آماده برای استفاده در بزرگترین پروژه ها!
-
-استار و حمایت فراموش نشه :)) 
+آماده برای استفاده در بزرگترین پروژه ها!
+------ 
