@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 requires = ['requests', 'urllib3', 'datetime']
-version = '10.3.4'
+version = '10.3.6'
 
 readme = '''
 <p align="center">
@@ -73,7 +73,17 @@ from rb import StartClient
 with StartClient(...) as client:
     print(client == dict(text='Hey', chat_id='chat-guid')) # to send message
     # print(client * 'chat-guid') # to get chat info
+    # use the operators
 
+```
+
+### for: if you forget the method name
+```python
+from rb import StartClient
+
+with StartClient('session') as client:
+    print(client.getChatInfo(client, 'chat-guid')) # GetChatInfo, GETchatINFO, or ...
+    # normally: client.get_chat_info('chat-guid')
 ```
 
 #### برای دیدن میانبر های کامل به مستندات ماژول مراجعه کنید.
@@ -211,7 +221,7 @@ pip install rubx --upgrade
 
 ## CREATED BY:
 
-    - saleh | rubika.ir/TheServer
+    - saleh
 
 
 # self rubika client with python3 RUBX module ![](https://i.imgur.com/fe85aVR.png)
@@ -239,13 +249,8 @@ _______________________
 </div>
 
 
-
 _______________________
 
-# view in github :
-[![library](https://img.shields.io/puppetforge/mc/python?color=blue&label=RUBX&logo=RUBX&logoColor=red)](https://github.com/Mester-Root/rubx)
-
-________________________
 
 ### the **special**:
 
@@ -253,6 +258,7 @@ ________________________
 - *[RUBX] > full method and all methods rubika !*
 - *[RUBX] > use api's rubika for you .*
 
+#### to use it, your python must support **type hint**.
 '''
 
 setup(
@@ -298,7 +304,7 @@ setup(
         "Source": "https://github.com/mester-root/rubx",
         "Documentation": "https://github.com/Mester-Root/rubx/blob/main/README.md",
     },
-    python_requires="~=3.5",
+    python_requires="~=3.9",
     packages=find_packages(),
     zip_safe=False,
     install_requires=requires
