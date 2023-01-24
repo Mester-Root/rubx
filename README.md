@@ -48,6 +48,15 @@ with StartClient(...) as client:
 
 #### برای دیدن میانبر های کامل به مستندات ماژول مراجعه کنید.
 
+### for: if you forget the method name
+```python
+from rb import StartClient
+
+with StartClient('session') as client:
+    print(client.getChatInfo(client, 'chat-guid')) # GetChatInfo, GETchatINFO, or ...
+    # normally: client.get_chat_info('chat-guid')
+```
+
 ## Rubino | مثال کلاینت روبینو
 
 ``` python
@@ -203,6 +212,7 @@ ________________________
 
 
 _________
+
 مثال هایی که میتوانید استفاده کنید: - ✅
 -------
 
