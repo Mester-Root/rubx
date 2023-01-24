@@ -1,12 +1,12 @@
 #!/bin/python
 
-from json import dumps, loads, dump, load
-from random import choice, randint
-from requests import get, post, session
-from .errors import *
-from .crypto import Encryption
-from .storage import SQLiteSession
-from .clients import *
+from json       import dumps, loads, dump, load
+from random     import choice, randint
+from requests   import get, post, session
+from .errors    import *
+from .crypto    import Encryption
+from .storage   import SQLiteSession
+from .clients   import *
 import typing
 
 class Errors:
