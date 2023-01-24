@@ -1,9 +1,12 @@
-from requests import post, get, session as Sn
-from .crypto import Encryption
+#!/bin/python
+
+import difflib, inspect
+from requests   import post, get, session as Sn
+from .crypto    import Encryption
 
 Client = 'RubikaClient'
 
-class RubinoClient(object):
+class Rubino(object):
 
     def __init__(self, session: str) -> (None):
         
@@ -16,6 +19,12 @@ class RubinoClient(object):
         
         self.session, self.auth, self.url = Sn(), session, 'https://rubino12.iranlms.ir'
 
+    def __call__(self):
+        pass
+    
+    def __dir__(self):
+        pass
+    
     def __enter__(self) -> (object):
         return self
 
@@ -294,3 +303,65 @@ class RubinoClient(object):
                 }
             )
         return self.__post(json=json)
+
+
+class Classer(object):
+
+    @classmethod
+    def create(cls, name, __base, authorise: list = [],
+               exception: bool = True, *args, **kwargs) -> object:
+        
+        result = None
+        if name in authorise:
+            result = name
+
+        else:
+            attr = difflib.get_close_matches(name, authorise, n=1)
+            
+            if attr:
+                return getattr(__base[0], attr[0])
+            
+            else:
+                caller = inspect.getframeinfo(inspect.stack()[2][0])
+                warn(
+                    f'{caller.filename}:{caller.lineno}: do you mean'
+                    f' "{name}", "{result}"? correct it')
+
+        if result != None or not exception:
+            if result == None:
+                result = name
+            # setattr(___base[0], result or name, lambda *args, **kwargs: ...)
+            # return getattr(__base[0], name)
+            return type(result, __base, {'__name__': result, **kwargs}) # add method to class
+
+        raise AttributeError(f'module has no attribute ({name})')
+
+
+class RubinoClient(Rubino):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+
+    def __getattr__(self, name, *args, **kwargs) -> Classer:
+        
+        # `note`: for: if you forget the method name
+        '''
+        from rb import RubinoClient
+        
+        with RubinoClient('session') as client:
+            print(client.createPage(client, 'chat-guid')) # CreatePage, createPAGES, other ...
+        '''
+
+        # for: normally
+        '''
+        from rb import StartClient
+        
+        with RubinoClient('session') as client:
+            print(client.create_page(...))
+        '''
+        
+        method = Classer.create(name, (Rubino, ), dir(Rubino))
+        
+        try:
+            return method(*args, **kwargs)
+        except Exception:
+            return method
