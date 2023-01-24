@@ -1,7 +1,8 @@
-from Crypto.Cipher.AES import (MODE_CBC,
-                               block_size, new)
-from Crypto.Util.Padding import pad, unpad
-from base64 import b64encode, urlsafe_b64decode
+#!/bin/python
+
+from Crypto.Cipher.AES      import MODE_CBC, block_size, new
+from Crypto.Util.Padding    import pad, unpad
+from base64                 import b64encode, urlsafe_b64decode
 
 class Encryption(object):
     
