@@ -1,14 +1,13 @@
 #!/bin/python
 
-import struct
-import typing
-import os
-from datetime import datetime, date, timedelta, timezone
-from re import compile, escape, search, findall, sub
-from time import sleep, gmtime, localtime
-from base64 import b64encode
-from collections import deque
-from html.parser import HTMLParser
+import struct, typing, os
+from datetime       import datetime, date, timedelta, timezone
+from re             import compile, escape, search, findall, sub
+from time           import sleep, gmtime, localtime
+from base64         import b64encode
+from collections    import deque
+from html.parser    import HTMLParser
+
 
 _EPOCH_NAIVE = datetime(*gmtime(0)[:6])
 _EPOCH_NAIVE_LOCAL = datetime(*localtime(0)[:6])
