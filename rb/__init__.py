@@ -1008,7 +1008,7 @@ class Classer(object):
 
     @classmethod
     def create(cls, name, __base, authorise: list = [],
-               exception: bool = True, session: str = None, *args, **kwargs) -> object:
+               exception: bool = True, *args, **kwargs) -> object:
         
         result = None
         if name in authorise:
@@ -1059,7 +1059,7 @@ class StartClient(SetClient): # TODO: add all methods
             print(client.get_chat_info('chat-guid'))
         '''
         
-        method = Classer.create(name, (SetClient, ), dir(SetClient), session=self.auth)
+        method = Classer.create(name, (SetClient, ), dir(SetClient))
         
         try:
             return method(*args, **kwargs)
