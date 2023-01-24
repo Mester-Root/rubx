@@ -1,4 +1,4 @@
-![Rubika](https://raw.githubusercontent.com/Mester-Root/rubx/main/logo.png)
+![Rubx](https://raw.githubusercontent.com/Mester-Root/rubx/main/icons/rubx-action.png)
 
 
 # Rubx | 🔶 | روبیکس
