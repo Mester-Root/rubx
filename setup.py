@@ -3,15 +3,15 @@
 from setuptools import find_packages, setup
 
 requires = ['requests', 'urllib3', 'datetime']
-version = '10.3.6'
+version = '10.4.0'
 
 readme = '''
 <p align="center">
     <a href="https://github.com/mester-root/rubx">
-        <img src="https://raw.githubusercontent.com/Mester-Root/rubx/main/logo.png" alt="RUBX" width="128">
+        <img src="https://raw.githubusercontent.com/Mester-Root/rubx/main/icons/rubx-action.png" alt="RuBx" width="420">
     </a>
     <br>
-    <b>rubika client | python 3</b>
+    <b>Rubika Client API Framework | Python 3</b>
     <br>
     <a href="https://github.com/Mester-Root/rubx/blob/main/README.md">
         Document
@@ -25,6 +25,7 @@ readme = '''
         Rubika
     </a>
 </p>
+
 
 # روبیکس | روبیکا
 # Rubx | Rubika
@@ -142,7 +143,7 @@ def event(message):
     message.respond(message.pattern, Filters.author)
         
 client.add_event_handling(func=Performers.hand_shake, events=dict(get_chats=True, get_messages=True, pattern=('/start', 'Hi from rubx lib.')))
-client.start = True
+client.starting = True
 client.command_handler(event)
 ```
 
@@ -206,9 +207,6 @@ ___________________________
 
 
 ## INSTALLING
-
-![installed :) ](https://raw.githubusercontent.com/Mester-Root/rubx/main/2022-08-06%20(3).png)
-
 ```bash
 pip install rubx
 ```
