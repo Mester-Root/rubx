@@ -117,12 +117,12 @@ class Thumbnail(object):
     
     @classmethod
     def __init__(cls, image: bytes) -> None:
-
-        if isinstance(self.image, str):
-            self.image = open(image, 'rb').read()
+        cls.image = image
+        if isinstance(image, str):
+            cls.image = open(image, 'rb').read()
 
     @property
-    def to_base64(self) -> str:
+    def to_base64(cls) -> str:
         
-        if self.image:
-            return base64.b64encode(self.image).decode('utf-8')
+        if cls.image:
+            return base64.b64encode(cls.image).decode('utf-8')
