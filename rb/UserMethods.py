@@ -1432,7 +1432,7 @@ class UserMethods:
                             'height'            :   height,
                             'mime'              :   file.split('.')[-1],
                             'size'              :   str(len(get(file).content if 'http' in file else open(file, 'rb').read())),
-                            'thumb_inline'      :   thumbnail or Thumbnail(open(file, 'rb+'), width, height).to_base64(),
+                            'thumb_inline'      :   thumbnail or Thumbnail(open(file, 'rb+'), width, height).to_base64,
                             'type'              :   'Gif'
                         },
                         'text'                  :   caption,
@@ -2244,7 +2244,7 @@ class UserMethods:
                 'height'            :   height,
                 'mime'              :   file.split('.')[-1],
                 'size'              :   str(len(get(file).content if 'http' in file else open(file, 'rb').read())),
-                'thumb_inline'      :   thumbnail or Thumbnail(open(file, 'rb+').read(), width, height).to_base64(),
+                'thumb_inline'      :   thumbnail or Thumbnail(open(file, 'rb+').read(), width, height).to_base64,
                 'time'              :   round(__import__('tinytag').TinyTag.get(file).duration * 1000),
                 'type'              :   'Video',
                 'width'             :   width
