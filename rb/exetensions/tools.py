@@ -1,8 +1,5 @@
 #!/bin/python
-
 # the tools version
-
-#from . import StartClient, UserMethods
 
 class Clean(str):
     
@@ -40,6 +37,7 @@ class Maker(object):
 
     @staticmethod
     def check_link(link: str, key: str) -> (str):
+        
         from rb import StartClient
         with StartClient(key) as client:
             
@@ -61,7 +59,7 @@ class Login(object):
 
     @staticmethod
     def SignIn(phone: str) -> (str):
-        from rb import StartClient
+        from rb import UserMethods
         return UserMethods.sign_in(phone, UserMethods.send_code(phone, input('send type is SMS/Interval : '), password=input('please enter your password : ') if input('insert password y/n : ').lower() == 'y' else None).get('data').get('phone_code_hash'), input('please enter activation code : ')).get('data').get('auth') or '0'
 
 class __Top(object):
@@ -114,3 +112,22 @@ class UpToDate(object):
                     os.system('cls')
                 else:
                     os.system('clear')
+
+class Thumbnail(object):
+    
+    @classmethod
+    def __init__(
+        cls,
+        image: bytes,
+        width: int = 720,
+        height: int = 720,
+        ) -> None:
+
+        if isinstance(self.image, str):
+            self.image = open(image, 'rb').read()
+
+    @property
+    def to_base64(self) -> str:
+        
+        if self.image:
+            return base64.b64encode(self.image).decode('utf-8')
