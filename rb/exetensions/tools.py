@@ -116,12 +116,7 @@ class UpToDate(object):
 class Thumbnail(object):
     
     @classmethod
-    def __init__(
-        cls,
-        image: bytes,
-        width: int = 720,
-        height: int = 720,
-        ) -> None:
+    def __init__(cls, image: bytes) -> None:
 
         if isinstance(self.image, str):
             self.image = open(image, 'rb').read()
