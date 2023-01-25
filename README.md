@@ -133,7 +133,7 @@ def event(message):
     message.respond(message.pattern, Filters.author)
         
 client.add_event_handling(func=Performers.chats_updates, event=dict(get_chats=True, get_messages=True, pattern=('/start', 'Hi from rubx lib.')))
-client.start = True
+client.starting = True
 client.command_handler(event)
 ```
 
