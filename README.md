@@ -180,7 +180,7 @@ pip install rubx --upgrade
 
 
 ## CREATED BY:
-    - saleh | rubika.ir/TheServer
+    - saleh
 
 _____________________________
 
