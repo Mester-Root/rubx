@@ -228,14 +228,6 @@ _______________________
 ________________________
 
 
-## the **special**:
-- *[RUBX] > a library or module 'official' for rubika messnger with client server from iran ! for all .*
+## **special**:
+- *[RUBX] > a library 'official' for rubika messnger with client server.*
 - *[RUBX] > full method .*
-- *[RUBX] > rubika api's method for you .*
-
-
-_________
-
-
-آماده برای استفاده در بزرگترین پروژه ها!
------- 
