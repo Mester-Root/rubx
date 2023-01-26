@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 requires = ['requests', 'urllib3', 'datetime']
-version = '10.4.0'
+version = '10.4.3'
 
 readme = '''
 <p align="center">
