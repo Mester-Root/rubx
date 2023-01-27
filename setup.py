@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 requires = ['requests', 'urllib3', 'datetime']
-version = '10.4.3'
+version = '10.4.4'
 
 readme = '''
 <p align="center">
@@ -27,9 +27,7 @@ readme = '''
 </p>
 
 
-# روبیکس | روبیکا
 # Rubx | Rubika
-
 
 ## Messenger:
 
@@ -57,7 +55,7 @@ with Client(...) as client:
             dict(
                 chat_id=...,
                 text='**Hey** @User@ R U __My__ ``Friend`` and ~~My Love~~'
-                mention_user_ids=['u0...]),
+                mention_user_ids=['u0...']),
             )
         )
     
@@ -66,7 +64,7 @@ with Client(...) as client:
 
 ### Or
 
-## shorcuts | مثالی از چند میانبر
+## shorcuts
 
 ```python
 from rb import StartClient
@@ -87,7 +85,7 @@ with StartClient('session') as client:
     # normally: client.get_chat_info('chat-guid')
 ```
 
-#### برای دیدن میانبر های کامل به مستندات ماژول مراجعه کنید.
+#### for show all operators and shortcuts go to docs
 
 
 ## Rubino
@@ -224,7 +222,6 @@ pip install rubx --upgrade
 
 # self rubika client with python3 RUBX module ![](https://i.imgur.com/fe85aVR.png)
 
-## .. rubika library ..
 _______________________
 
 [![Python 3|2.7|3.x](https://img.shields.io/badge/python-3|3.0|3.x-yellow.svg)](https://www.python.org/)
