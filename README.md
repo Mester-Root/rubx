@@ -3,7 +3,7 @@
         <img src="https://raw.githubusercontent.com/Mester-Root/rubx/main/icons/rubx-action.png" alt="Rubx" width="420">
     </a>
     <br>
-    <b>Rubika API Framework for Python</b>
+    <b>Rubika Client API Framework for Python</b>
     <br>
     <a href="https://pypi.org/project/rubx">
         Homepage
