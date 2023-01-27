@@ -57,7 +57,7 @@ with Client(...) as client:
 
 ### Or
 
-## shorcuts | مثالی از چند میانبر
+## Shorcuts | مثالی از چند میانبر
 
 ```python
 from rb import StartClient
@@ -136,7 +136,7 @@ client.starting = True
 client.command_handler(event)
 ```
 
-## to using HandShake(WebSocket):
+## To using HandShake(WebSocket):
 
 ```python
 from rb import Handler, EventBuilder, Filters, Performers
