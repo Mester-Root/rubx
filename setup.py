@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 requires = ['requests', 'urllib3', 'datetime']
-version = '10.4.4'
+version = '10.4.6'
 
 readme = '''
 <p align="center">
@@ -33,9 +33,9 @@ readme = '''
 
 ```python
 
-from rb import StartClient # rb: is main package
+from rb import RubikaClient # rb: is main package
 
-with StartClient('session') as client:
+with RubikaClient('session') as client:
    client.send_message('Hello From Rubx', 'chat-guid')
 
 ```
@@ -43,7 +43,7 @@ with StartClient('session') as client:
 ### Or
 
 ```python
-from rb import StartClient as Client
+from rb import RubikaClient as Client
 
 def respond(callable, params) -> dict:
     return callable(**params)
@@ -67,9 +67,9 @@ with Client(...) as client:
 ## shorcuts
 
 ```python
-from rb import StartClient
+from rb import RubikaClient
 
-with StartClient(...) as client:
+with RubikaClient(...) as client:
     print(client == dict(text='Hey', chat_id='chat-guid')) # to send message
     # print(client * 'chat-guid') # to get chat info
     # use the operators
@@ -78,9 +78,9 @@ with StartClient(...) as client:
 
 ### for: if you forget the method name
 ```python
-from rb import StartClient
+from rb import RubikaClient
 
-with StartClient('session') as client:
+with RubikaClient('session') as client:
     print(client.getChatInfo(client, 'chat-guid')) # GetChatInfo, GETchatINFO, or ...
     # normally: client.get_chat_info('chat-guid')
 ```
@@ -124,7 +124,7 @@ from rb import Handler, NewMessage, Filters, EventBuilder, Performers
 
 client = Handler(...)
 
-@client.on(NewMessage(client.handle, handle_name=Performers.chats_updates))
+@client.on(NewMessage(client.handle, handle_name=Performers.chats_updates).builder())
 def update(event: EventBuilder):
     ... # event.respond('Hey', Filters.chat)
 
@@ -162,14 +162,23 @@ def update(app, update, event):
 ## Async methods
 
 ```python
-from rb import BaseClient # BaseClient: asycn reader
+from rb import Client # Client: asycn reader
 
 async def run(*args):
-    async with BaseClient(...) as client:
+    async with Client(...) as client:
         result = await client.start(client.send_message, 'Hey! from rubx', 'chat-guid')
         print(result)
 
-BaseClient.run(run)
+Client.run(run)
+```
+
+### How to get keys from result?
+
+```python
+from rb import RubikaClient
+
+with RubikaClient('session', return_data_an_dict=False) as client:
+    print((client * 'chat-guid').data.chat) # get chat info: get data and get chat from a chat object
 ```
 
 _____________________________
@@ -228,9 +237,9 @@ _______________________
 
 [![License](https://img.shields.io/badge/license-GPLv2-red.svg)](https://raw.githubusercontent.com/Mester-Root/rubx/main/LICENSE)
 
-[![creator: ](https://img.shields.io/badge/Telegram-Channel-33A8E3)](https://t.me/rubx_library)
+[![Creator](https://img.shields.io/badge/Telegram-Channel-33A8E3)](https://t.me/rubx_library)
 
-[![Telegram](https://img.shields.io/badge/-telegram-red?color=white&logo=telegram&logoColor=black)](https://t.me/creator_ryson)
+[![Telegram](https://img.shields.io/badge/-telegram-red?color=white&logo=telegram&logoColor=black)](https://t.me/clientUser)
 _______________________
 
 <div align="center">
@@ -247,11 +256,10 @@ _______________________
 _______________________
 
 
-### the **special**:
+### **special**:
 
-- *[RUBX] > a library or module 'official' for rubika messnger with client server from iran ! for all .*
-- *[RUBX] > full method and all methods rubika !*
-- *[RUBX] > use api's rubika for you .*
+- *[RUBX] > a library 'official' for rubika messnger with client server.*
+- *[RUBX] > use api's rubika, and full methods.*
 
 #### to use it, your python must support **type hint**.
 '''
