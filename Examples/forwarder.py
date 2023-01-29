@@ -8,7 +8,7 @@ from json       import load, loads
 from re         import compile, findall, search, sub
 from time import sleep
 
-from rb import StartClient, Handler, EventBuilder, Filters, Performers  # rubx V'10.3.7'
+from rb import RubikaClient, Handler, EventBuilder, Filters, Performers  # rubx V'10.3.7'
 from requests import get as getData
 
 # user inserts
@@ -118,7 +118,7 @@ class __reg:
 # main funcs
 def updates(*args) -> (None):
 
-    with StartClient(Data.auth) as client: #TODO: set platform via rubx and ...
+    with RubikaClient(Data.auth) as client: #TODO: set platform via rubx and ...
         
         try:
 
