@@ -31,9 +31,9 @@ Rubx | 🔶 | روبیکس
 
 ```python
 
-from rb import StartClient # rb: is main package
+from rb import RubikaClient # rb: is main package
 
-with StartClient('session') as client:
+with RubikaClient('session') as client:
    client.send_message('**Hey** __from__ ``rubx``', 'chat-guid')
 
 ```
@@ -41,7 +41,7 @@ with StartClient('session') as client:
 ### Or
 
 ```python
-from rb import StartClient as Client
+from rb import RubikaClient as Client
 
 def respond(callable, params) -> dict:
     return callable(**params)
@@ -60,9 +60,9 @@ with Client(...) as client:
 ## Shorcuts | مثالی از چند میانبر
 
 ```python
-from rb import StartClient
+from rb import RubikaClient
 
-with StartClient(...) as client:
+with RubikaClient(...) as client:
     print(client == dict(text='Hey', chat_id='chat-guid')) # to send message
     # print(client * 'chat-guid') # to get chat info
    # use the operators
@@ -72,9 +72,9 @@ with StartClient(...) as client:
 
 ### for: if you forget the method name
 ```python
-from rb import StartClient
+from rb import RubikaClient
 
-with StartClient('session') as client:
+with RubikaClient('session') as client:
     print(client.getChatInfo(client, 'chat-guid')) # GetChatInfo, GETchatINFO, or ...
     # normally: client.get_chat_info('chat-guid')
 ```
@@ -153,14 +153,14 @@ def update(app, update, event):
 ## Async methods
 
 ```python
-from rb import BaseClient # BaseClient: asycn reader
+from rb import Client # Client: asycn reader
 
 async def run(*args):
-    async with BaseClient(...) as client:
+    async with Client(...) as client:
         result = await client.start(client.send_message, 'Hey! from rubx', 'chat-guid')
         print(result)
 
-BaseClient.run(run)
+Client.run(run)
 ```
 
 ___________________________
