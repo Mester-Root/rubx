@@ -24,7 +24,7 @@ print(anti_spam(['Hey', 'Love', 'Hey']))
 # Examples
 
 '''
-from rb import Handler, Filters, Performers, EventBuilder, BaseClient
+from rb import Handler, Filters, Performers, EventBuilder, Client
 
 client = Handler('session')
 client.add_event_handling(func=Performers.hand_shake, events=dict(get_messages=True, get_chats=False))
@@ -39,11 +39,11 @@ def update(client, message, event):
 # Or
 
 async def run(*args):
-    async with BaseClient('session') as client:
+    async with Client('session') as client:
         results = await client.start(client.get_messages_interval, chat_id='g0...', middle_message_id=await client.start(client.get_chat_last_message_id('g0...')))
         finded = anti_spam([text.get('text') for text in results['data']['messages']])
         if finded.get('is_spam'):
             for i in finded['spam_index_list']:
                 await client.start(client.delete_messages, [results['data']['messages'][i].get('message_id')], 'g0...')
-BaseClient.run(run)
+Client.run(run)
 '''
