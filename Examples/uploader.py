@@ -5,7 +5,7 @@ from datetime   import datetime
 from os         import system
 from re         import compile, findall, search, sub
 from requests   import get
-from rb         import (StartClient as Client, Handler,
+from rb         import (RubikaClient as Client, Handler,
                         EventBuilder, Filters, Performers) # rubx lib - 10.4.0 version
 
 logging.basicConfig(level=logging.WARNING)
