@@ -22,11 +22,8 @@ class ChannelMethods:
     def __enter__(self):
         return (self)
 
-    def __exit__(
-        self,
-        *args,
-        **kwargs
-        ) -> None:
+    def __exit__(self, *args,
+                 **kwargs) -> None:
         pass
     
     set_channel_link        =   lambda self, chat_id: GetData.api(version=self.api_version or '5', method='setChannelLink', auth=self.auth, data={'channel_guid': chat_id}, mode=self.city, platform=self.platform or 'web', proxy=self.proxy)
