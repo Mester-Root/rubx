@@ -38,8 +38,9 @@ class Maker(object):
     @staticmethod
     def check_link(link: str, key: str) -> (str):
         
-        from rb import StartClient
-        with StartClient(key) as client:
+        from rb import RubikaClient
+        
+        with RubikaClient(key) as client:
             
             if link.startswith('@') or search(r'rubika\.ir/\w{4,25}', link):
 
