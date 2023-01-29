@@ -40,7 +40,7 @@ def update(client, message, event):
 
 async def run(*args):
     async with Client('session') as client:
-        results = await client.start(client.get_messages_interval, chat_id='g0...', middle_message_id=await client.start(client.get_chat_last_message_id('g0...')))
+        results = await client.start(client.get_messages_interval, chat_id='g0...', middle_message_id=await client.start(client.get_chat_last_message_id, 'g0...'))
         finded = anti_spam([text.get('text') for text in results['data']['messages']])
         if finded.get('is_spam'):
             for i in finded['spam_index_list']:
