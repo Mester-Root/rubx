@@ -5,7 +5,7 @@ from rb import Handler, EventBuilder, Filters, Performers
 
 client = Handler(...) # insert session
 
-client.add_event_handling(func=Performers.chats_updates, events=dict()) # ChatsUpdates for getting all updates.
+client.add_event_handling(func=Performers.chats_updates, events=dict(get_messages=True, get_chats=True)) # ChatsUpdates for getting all updates.
 
 @client.handler
 def update(app, message: EventBuilder, event: dict):
