@@ -1,11 +1,11 @@
 #!/bin/python
 # echo bot
 # rubx lib v 10.1.9
-from rb import Handler, EventBuilder, Filters
+from rb import Handler, EventBuilder, Filters, Performers
 
 client = Handler(...) # insert session
 
-client.add_event_handling(func='ChatsUpdates', events=dict()) # ChatsUpdates for getting all updates.
+client.add_event_handling(func=Performers.chats_updates, events=dict()) # ChatsUpdates for getting all updates.
 
 @client.handler
 def update(app, message: EventBuilder, event: dict):
