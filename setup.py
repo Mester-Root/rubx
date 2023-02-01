@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 requires = ['requests', 'urllib3', 'datetime']
-version = '10.4.6'
+version = '10.4.7'
 
 readme = '''
 <p align="center">
@@ -27,7 +27,7 @@ readme = '''
 </p>
 
 
-# Rubx | Rubika
+# [Rubx] - rubika messenger
 
 ## Messenger:
 
