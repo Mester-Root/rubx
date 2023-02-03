@@ -1,6 +1,6 @@
 #!/bin/python
 
-from requests       import get
+from requests       import get, post
 from pathlib        import Path
 from random         import choice, randint, sample
 from re             import findall, search, sub, compile, escape
