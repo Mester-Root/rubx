@@ -1,8 +1,10 @@
 #!/bin/python
 
 class Exceptions:
-    class SessionError(OSError):
-        pass
+    ...
+
+class SessionError(OSError):
+    pass
 
 class MainError(Exception):
     pass
