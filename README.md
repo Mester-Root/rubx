@@ -230,3 +230,7 @@ ________________________
 ## **special**:
 - *[RUBX] > a library 'official' for rubika messnger with client server.*
 - *[RUBX] > full method .*
+
+
+𝙍𝙪𝙗𝙭 𝙈𝙚𝙨𝙨𝙚𝙣𝙜𝙚𝙧
+---------------
