@@ -85,7 +85,7 @@ with RubikaClient('session') as client:
 
 from rb import RubinoClient
 
-with RubinoClient('session') as client:
+with RubinoClient(__name__, 'session') as client:
     client.create_page(...)
 
 ```
