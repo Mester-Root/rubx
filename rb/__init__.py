@@ -55,7 +55,7 @@ except ImportError:
 
 
 class Version(str):
-    __version__ =   '10.5.0'
+    __version__ =   '10.5.1'
     __author__  =   'saleh'
     __lisense__ =   'MIT'
     __module__  =   'rubx'
