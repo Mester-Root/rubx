@@ -168,7 +168,7 @@ ___________________________
 ## INSTALLING | نصب
 
 ```bash
-pip install rubx
+pip install --user rubx
 ```
 
 ## UPGRADE | بروز رسانی
