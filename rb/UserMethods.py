@@ -22,7 +22,9 @@ from .parser        import (MessageEmpty, MessageEntityBold,
                             MessageEntityUnderline, MessageEntityUnknown,
                             MessageEntityUrl, Metas, Tags, MetaDataLoader)
 
+
 Client = 'RubikaClient'
+
 
 class UserMethods:
     
