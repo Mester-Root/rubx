@@ -377,8 +377,8 @@ class BotMethods:
             - `self.send_files('chat-guid', 'C:\\music.mp3', 'Music')` 
         '''
 
-        url = self.__request_send_file(file_type or 'File')
-        file_id = self.__upload(url, file)
+        url = self.__request_send_file(file_type or 'File').get('download_url')
+        file_id = self.__upload(url, file).get('file_id')
 
         data: dict = {
             'chat_id'               :   chat_id,
