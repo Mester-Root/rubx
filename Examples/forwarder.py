@@ -39,7 +39,7 @@ START       :   bool = True
 logging.basicConfig(level=logging.ERROR)
 
 if (typing.TYPE_CHECKING):
-    if (isintance(SESSION, str) and SESSION.__len__() != 32):
+    if (isinstance(SESSION, str) and SESSION.__len__() != 32):
         quit('err in session.')
 
 class Data(str):
@@ -153,7 +153,7 @@ def updates(*args) -> (None):
                 app.add_event_handling(func=Performers.chats_updates, events=dict(get_chats=True, get_messages=True))
                 
                 @app.handler
-                def update(methods: StartClient, message: EventBuilder, event: dict):
+                def update(methods: RubikaClient, message: EventBuilder, event: dict):
                     
                     try:
                         if START:
@@ -227,7 +227,7 @@ def updates(*args) -> (None):
                                                             
                                                             elif (messages.get('type') == 'Text' and messages.get('author_object_guid') and messages.get('author_object_guid') in infos.get('user_guid') and messages.get('text').startswith('/edit')):
                                                                 Data.to_seen: str = messages.get('text').replace('/edit ').replace('[').replace(']').strip()
-                                                                methods.send_message('تعداد سین تغییر کرد! {}'.format(msg.get('text').split(' ')[1]), messages.get('author_object_guid') or infos.get('user_guid'), reply_to_message_id=messages.get('message_id'))
+                                                                methods.send_message('تعداد سین تغییر کرد! {}'.format(message.get('text').split(' ')[1]), messages.get('author_object_guid') or infos.get('user_guid'), reply_to_message_id=messages.get('message_id'))
                                                                 break
                                                         
                                                         if (Data.is_exit):
@@ -250,7 +250,7 @@ def updates(*args) -> (None):
                                                                 try:
                                                                     for (member) in (methods.get_group_mention_list(guid).get('data').get('in_chat_members')):
                                                                         
-                                                                        if not (msg.get('author_object_guid') or infos.get('user_guid') in member):
+                                                                        if not (member.get('author_object_guid') or infos.get('user_guid') in member):
                                                                             
                                                                             methods.forward_messages(Data.infos[0], [Data.infos[1]], member.get('member_guid'))
                                                                             methods.delete_user_chat(member.get('member_guid'), methods.get_last_message_id(member.get('member_guid')) or '0')
