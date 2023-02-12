@@ -11,6 +11,10 @@ from time import sleep
 from rb import RubikaClient, Handler, EventBuilder, Filters, Performers  # rubx V'10.3.7'
 from requests import get as getData
 
+
+logging.basicConfig(level=logging.ERROR)
+
+
 # user inserts
 SESSION     :   str  = 'abc...' # your account session
 CHAT_FILTERS:   list = ['u0...'] # a list to chat guids or a `[]` or `None` to get all chats
@@ -35,8 +39,6 @@ START       :   bool = True
 ### END .
 '''
 
-
-logging.basicConfig(level=logging.ERROR)
 
 if (typing.TYPE_CHECKING):
     if (isinstance(SESSION, str) and SESSION.__len__() != 32):
