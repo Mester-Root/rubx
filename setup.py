@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 requires = ['requests', 'urllib3', 'datetime']
-version = '10.5.1'
+version = '10.5.2'
 
 readme = '''
 <p align="center">
@@ -180,6 +180,30 @@ from rb import RubikaClient
 with RubikaClient('session', return_data_an_dict=False) as client:
     print((client * 'chat-guid').data.chat) # get chat info: get data and get chat from a chat object
 ```
+
+
+## Bot API Methods
+
+### example for api methods send message text
+```python
+from rb import BotAPI
+
+with BotAPI(__name__, 'token') as app:
+    app.send_message('chat-id', 'Hey!')
+```
+
+### Handler
+```python
+from rb import BotAPI
+
+with BotAPI(__name__, 'token') as app:
+    app.add_event_handling(('\w{1}start', 'Hello'))
+    
+    @app.handler
+    def update(methods, update, event):
+        ...
+```
+
 
 _____________________________
 
