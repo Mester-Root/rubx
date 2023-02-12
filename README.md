@@ -163,6 +163,30 @@ async def run(*args):
 Client.run(run)
 ```
 
+
+## Bot API Methods
+
+### example for api methods send message text
+```python
+from rb import BotAPI
+
+with BotAPI(__name__, 'token') as app:
+    app.send_message('chat-id', 'Hey!')
+```
+
+### Handler
+```python
+from rb import BotAPI
+
+with BotAPI(__name__, 'token') as app:
+    app.add_event_handling(('\w{1}start', 'Hello'))
+    
+    @app.handler
+    def update(methods, update, event):
+        ...
+```
+
+
 ___________________________
 
 ## INSTALLING | نصب
