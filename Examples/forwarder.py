@@ -105,8 +105,8 @@ class SQLiteSession(object):
 
 class __reg:
     
-    @staticmethod
-    def _replacer(__command: str, __text: str) -> (typing.Union[dict, None]):
+    @classmethod
+    def _replacer(cls, __command: str, __text: str) -> (typing.Union[dict, None]):
         
         if (__command == 'link'):
 
@@ -172,7 +172,7 @@ def updates(*args) -> (None):
                                     if message.text == '/help':
                                         message.respond('برای سین زدن یک پست به روش اول:\n\n    - / forward [post] [number]\nEXAMPLE:\n/ forward https://rubika.ir/channel/post 1000\n\nروش دوم:\n    - پست رو فوروارد کنید سپس بر روی اون ریپلای کرده و:\n/ forward 1000\n\nدوست خوبم برای سین زدن پست یکی از روش های بالا را انجام دهید.\n\nبرای فعال کردن یا غیر فعال کردن اعلانات یا تعداد سین:\n\n    - /on_notifications\n    - /off_notifications\nادیت تعداد سین\n    - / edit [number]\nمثلا:\n    - / edit 500\n\nنکته: مقدار سین حتما باید حداقل ۵۰ تا بالاتر از سین فعلی پست باشد.\nپشنهاد: از روش اول استفاده کنید.', Filters.author)
                                 
-                                    elif (search('^/forward (\S+)', message.text)):
+                                    elif (search('/forward (\S+)', message.text)):
                                         
                                         message.respond('در حال برسی پست شما...❗️', Filters.author)
                                         
