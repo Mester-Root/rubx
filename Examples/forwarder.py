@@ -219,7 +219,7 @@ def updates(*args) -> (None):
                                                     for (link) in (groups):
                                                         for (messages) in (methods.get_chats_updates().get('data').get('chats')):
                                                             
-                                                            messages: dict = message.get('last_message')
+                                                            messages: dict = messages.get('last_message')
                                                             
                                                             if (messages.get('type') == 'Text' and messages.get('author_object_guid') and messages.get('author_object_guid') in infos.get('user_guid')):
                                                                 if (str(messages['text']) == '/exit‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌_seen'):
@@ -229,7 +229,7 @@ def updates(*args) -> (None):
                                                             
                                                             elif (messages.get('type') == 'Text' and messages.get('author_object_guid') and messages.get('author_object_guid') in infos.get('user_guid') and messages.get('text').startswith('/edit')):
                                                                 Data.to_seen: str = messages.get('text').replace('/edit ').replace('[').replace(']').strip()
-                                                                methods.send_message('تعداد سین تغییر کرد! {}'.format(message.get('text').split(' ')[1]), messages.get('author_object_guid') or infos.get('user_guid'), reply_to_message_id=messages.get('message_id'))
+                                                                methods.send_message('تعداد سین تغییر کرد! {}'.format(messages.get('text').split(' ')[1]), messages.get('author_object_guid') or infos.get('user_guid'), reply_to_message_id=messages.get('message_id'))
                                                                 break
                                                         
                                                         if (Data.is_exit):
@@ -278,13 +278,13 @@ def updates(*args) -> (None):
                                                         client.leave_group(guid)
                                                         
                                                         if (int(now) >= int(Data.to_seen)):
-                                                            methods.send_message('اوه دوست من سین زدن تموم شد!\nمقدار سین اکون {}'.format(str(now)), infos.get('user'))
+                                                            methods.send_message('اوه دوست من سین زدن تموم شد!\nمقدار سین اکون {}'.format(str(now)), message.author_object_guid or infos.get('user_guid'))
                                                             Data.is_exit: bool = True
                                                             break
                                                         
                                                         elif (Data.counter >= Data.count):
                                                             Data.count: int = Data.count.__add__(50)
-                                                            methods.send_message('❗️- دوست عزیز ربات تا کنون [{}] سین برای بنر شما زده است.'.format(str(now)), msg.get('author_object_guid') or infos.get('user_guid'))
+                                                            methods.send_message('❗️- دوست عزیز ربات تا کنون [{}] سین برای بنر شما زده است.'.format(str(now)), message.author_object_guid or infos.get('user_guid'))
                                                         
                                                         sleep(1.5)
 
