@@ -7,10 +7,10 @@ if __name__.__eq__('__main__').__and__(__package__.__eq__(None) or __package__._
     sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 try:
-    import tinytag, Crypto
+    import tinytag, Crypto, pydantic
 except ModuleNotFoundError:
     from .extensions import PyPi
-    PyPi().installation(['tinytag', 'pycryptodome'])
+    PyPi().installation(['tinytag', 'pycryptodome', 'pydantic'])
 
 import logging, platform, typing, difflib, inspect
 
@@ -57,7 +57,7 @@ except ImportError:
 
 
 class Version(str):
-    __version__ =   '10.5.2'
+    __version__ =   '10.5.3'
     __author__  =   'saleh'
     __lisense__ =   'MIT'
     __module__  =   'rubx'
