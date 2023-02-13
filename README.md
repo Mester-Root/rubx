@@ -166,7 +166,7 @@ Client.run(run)
 
 ## Bot API Methods
 
-### example for api methods send message text
+### Example for api methods send message text
 ```python
 from rb import BotAPI
 
