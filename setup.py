@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 requires = ['requests', 'urllib3', 'datetime']
-version = '10.5.4'
+version = '10.5.6'
 
 readme = '''
 <p align="center">
@@ -36,7 +36,7 @@ readme = '''
 from rb import RubikaClient # rb: is main package
 
 with RubikaClient('session') as client:
-   client.send_message('Hello From Rubx', 'chat-guid')
+   client.send_message('Hello From Rubx', '@username')
 
 ```
 
