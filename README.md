@@ -34,7 +34,7 @@ Rubx | 🔶 | روبیکس
 from rb import RubikaClient # rb: is main package
 
 with RubikaClient('session') as client:
-   client.send_message('**Hey** __from__ ``rubx``', 'chat-guid')
+   client.send_message('**Hey** __from__ ``rubx``', '@username')
 
 ```
 
