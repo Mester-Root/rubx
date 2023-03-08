@@ -57,7 +57,7 @@ except ImportError:
 
 
 class Version(str):
-    __version__ =   '10.5.7'
+    __version__ =   '10.6.0'
     __author__  =   'saleh'
     __lisense__ =   'MIT'
     __module__  =   'rubx'
@@ -74,7 +74,7 @@ class RubikaClient(ABC):
                  'base_logger', 'check_session', 'api_client',
                  'return_data_an_dict')
 
-    __base_class__ = 'RubikaClient'
+    __base_class__, __version__ = 'RubikaClient', Version.__version__
 
     def __str__(self, *args) -> (str):
         return dumps({'session': SQLiteSession(self.auth).information()}, indent=2) if self.auth else dumps({'__base_class__': __base_class__}, indent=2)
@@ -130,7 +130,7 @@ class RubikaClient(ABC):
             `def run(callable, params) -> dict:`
                 `return callable(**params)`
 
-            ```
+        
             print(
                 run(
                     client.send_message,
@@ -140,7 +140,11 @@ class RubikaClient(ABC):
                         )
                     )
                 )
-            ```
+            
+            
+            with RubikaClient('session') as client:
+                print(client * '@username') # to getting ifo from a chat
+
 
         ## PARAMETERS:
         
@@ -285,7 +289,7 @@ class RubikaClient(ABC):
             if isinstance(return_data_action, (list, tuple)):
                 Make.action, Make.type = return_data_action
 
-            elif isinstance(return_data_action, str) and any(return_data_action.__contains__(action) for action in ('dict', 'str', 'object')):
+            elif isinstance(return_data_action, str) and any(return_data_action.__contains__(action) for action in ('dict', 'str', 'object', 'model')):
                 Make.action: str = return_data_action
 
         if headers:
@@ -372,15 +376,12 @@ class RubikaClient(ABC):
         __import__('_thread').start_new_thread(func, *args, **kwargs)
 
 
-Client = (RubikaClient)
+Client = RubikaClient
 
-class SetClient(
-    RubikaClient,
-    UserMethods,
-    GroupMethods,
-    ChannelMethods
-    ):
+class SetClient(RubikaClient, UserMethods,
+                GroupMethods, ChannelMethods):
     pass
+
 
 class WebSocket(object):
 
@@ -422,6 +423,11 @@ class WebSocket(object):
     
     @property
     def connection(self) -> (None):
+
+        '''
+        async with __import__('websockets').connect('wss://jsocket4.iranlms.ir:80') as ws:
+            ... # TODO: use the async websocket client
+        '''
 
         from websocket import create_connection
 
