@@ -57,6 +57,9 @@ class GroupMethods:
         `self.__get_chat_id('@username')`
         '''
 
+        if chat_id.__eq__('me'):
+            chat_id: str = self.username or self.chat_id
+
         if not compile(r'^g0\w+$|^u0\w+$|^s0\w+$|^c0\w+$|^b0\w+$|rubika\.ir\/\w+|\@\w+').search(chat_id):
             chat_id: str = '@' + chat_id
 
@@ -74,7 +77,7 @@ class GroupMethods:
         ) -> typing.Union[str, dict]:
 
         '''
-        self.ban_group_member(user_id='chat id or guid', chat_id='chat guid')
+        `self.ban_group_member(user_id='chat id or guid', chat_id='chat guid')`
         
         PARAMETRS:
             1- self - self object
