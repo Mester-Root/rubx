@@ -2,6 +2,7 @@
 
 from json           import  dumps, loads, dump, load, JSONDecodeError
 from random         import  choice, randint
+from collections    import namedtuple, OrderedDict
 from requests       import  get, post, session
 from .exceptions    import  *
 from .crypto        import  Encryption
@@ -27,9 +28,49 @@ class Errors(object):
             elif 'INVALID_AUTH' in det.upper():
                 raise InvalidAUTH('Server error or please check method arguments and try again.')
             else:
-                raise APIError('Request is invalid: (%s)' % status)
+                return 1
         else:
             return 1
+
+    @classmethod
+    def BotError(cls, status: str) -> bool:
+        if status.upper() != 'OK':
+            raise APIError('Request is invalid: (%s)' % status)
+        else:
+            return 1
+
+
+class Model(object):
+
+
+    @classmethod
+    def __make(cls, results: dict,
+               value: typing.Union[dict, list, tuple],
+               result: object, new: list = None) -> namedtuple:
+        
+        results[[key for key in results.keys() if value == results.get(key)].__iter__().__next__()] = new or cls.ording(value)
+        return result(**results)
+
+
+    @classmethod
+    def ording(cls, dict_: dict) -> namedtuple:
+
+        for value in (results := (result := namedtuple('Client', field_names=dict_.keys(), defaults=(None, )))(**dict_)):
+
+            if isinstance(value, dict):
+                
+                for find in value.keys():
+                    if isinstance(value.get(find), dict):
+                        value[find] = cls.ording(value.get(find))
+
+                results = cls.__make(results._asdict(), value, result)
+
+            elif isinstance(value, (list, tuple)):
+                new = [cls.ording(find) if isinstance(find, dict) else find for find in value]
+                results = cls.__make(results._asdict(), value, result, new)
+
+        else:
+            return results
 
 
 class ClientConnectorError(object):
@@ -80,6 +121,8 @@ class Urls(str):
                     continue
 
     giveUrl = lambda mode='mashhad', key=None: SQLiteSession(key).information()[3] if key and 'https://' in SQLiteSession(key).information() else ('https://messengerg2c{}.iranlms.ir/'.format(str('56' if mode.lower() == 'mashhad' else '74' if mode.lower() == 'tehran' else str(randint(3, 74)))))
+
+
 
 
 class MakeDataKeys(object):
@@ -183,7 +226,7 @@ class Make(object):
         except Exception:
             res = str(Encryption(key).decrypt(message.get('data_enc')))
 
-        if isinstance(res, dict) and Errors.MadeError(res.get('status') or '', res.get('status_det') or ''):
+        if isinstance(res, dict) and Errors.MadeError(res.get('status') or 'OK', res.get('status_det') or 'OK'):
             
             if Make.type.__eq__('message'):
                 res: dict = res.get('data')
@@ -192,24 +235,25 @@ class Make(object):
             
             elif Make.type.__eq__('bot'):
                 res: dict = res.get('data')
-                
-            return MakeDataKeys(res) if Make.action.__contains__('str') else Attrs.create(res, action=Make.type) if Make.action.__eq__('object') else (res)
+            
+
+            return ((MakeDataKeys(res)) if (Make.action.__contains__('str')) else (Attrs.create(res, action=Make.type) if Make.action.__contains__('object') else (Model.ording(res) if (Make.action.__contains__('model')) else (res))))
         
         else:
             return res
 
 
-    def base_pwa(__method: str = 'getBaseInfo', /,
-                 __data: dict = {}, __session: str = None,
-                 __api_version: str = '0', __api: str = 'https://servicesbase.iranlms.ir/',
-                 __platform: dict = None, __timeout: int = 5, __json: dict = None,
+    def base_pwa(method: str = 'getBaseInfo',
+                 data: dict = {}, session_key: str = None,
+                 api_version: str = '0', api: str = 'https://servicesbase.iranlms.ir/',
+                 platform: dict = None, timeout: int = 5, json: dict = None,
                  *args, **kwargs) -> typing.Union[dict, MakeDataKeys, Attrs]:
 
         '''
         this method has for make pwa platform
         '''
 
-        result: dict = session().post(__api, json = __json or ({'method': __method, 'api_version': __api_version, 'data': __data, 'auth': __session, 'client': __platform or clients.pwa}), timeout=__timeout).json()
+        result: dict = session().post(api, json = json or ({'method': method, 'api_version': api_version, 'data': data, 'auth': session_key, 'client': platform or clients.pwa}), timeout=timeout).json()
         
         return MakeDataKeys(result) if Make.action.__contains__('str') else Attrs.create(result, action=Make.type) if Make.action.__eq__('object') else (result)
 
@@ -336,10 +380,9 @@ class GetData(Connection):
                     if i == 2:
                         raise BotApiTimeOutError(f'{e}')
 
-        if Errors.MadeError(result.get('status'), 'true'):
+        if Errors.BotError(result.get('status')):
             return MakeDataKeys(result) if Connection.type else result
 
 
     def pwa(*args, **kwargs) -> Make:
         return Make.base_pwa(*args, **kwargs)
-
