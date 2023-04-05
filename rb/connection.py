@@ -341,7 +341,7 @@ class Connection(dict):
                         except Exception: ...
                         try: Make.app.get_chats_updates()
                         except Exception: ...
-                        Make.app.get_dcs()
+                        Make.app.get_dcs
 
                 except Exception as e:
                         raise e
