@@ -6,6 +6,9 @@ class Filters(str):
 class Performers(str):
     chats_updates, messages_updates, hand_shake = 'ChatsUpdates', 'MessagesUpdates', 'HandShake'
 
+class Platforms(str):
+    android, rubika, rubx, web, pwa, m = 'android', 'rubika', 'rubx', 'web', 'pwa', 'rubikam'
+
 class AccessList(object):
     
     class Admin(str):
