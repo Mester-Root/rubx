@@ -1,8 +1,8 @@
 #!/bin/python
 
-from .connection import GetData
+from .connection    import  GetData
+from .sessions      import  RubikaClient as Client
 
-Client = 'RubikaClient'
 
 class Method(object):
 
