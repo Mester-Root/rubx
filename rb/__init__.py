@@ -343,8 +343,8 @@ class RubikaClient(ABC):
     def __hash__(self):
         return hash(RubikaClient)
 
-    def __call__(self) -> (None):
-        pass
+    def __call__(self, *args, **kwargs) -> (None):
+        return NotImplemented
 
     def __enter__(self):
         return (self)
