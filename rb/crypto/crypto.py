@@ -10,7 +10,7 @@ class Encryption(object):
     
     def __init__(cls, auth_key: str) -> ...:
         if len(str(auth_key)) != 32:
-            raise IndexError(f'Incorrect AES key length ({auth_key.__len__().__str__()} bytes), it should be 32 chars len')
+            raise IndexError(f'Incorrect AUTH key length ({auth_key.__len__().__str__()} bytes), it should be 32 chars len')
         cls.auth_key, cls.iv = bytearray((''.join(list(map(lambda a: chr((a - ord('a') + 9) % 26 + ord('a')), (str(auth_key[16:24] + auth_key[:8] + auth_key[24:32] + auth_key[8:16]).encode('latin-1')))))), 'utf-8'), bytearray.fromhex(str('0' * len(auth_key)))
 
     def encrypt(cls, data: str) -> (str):
