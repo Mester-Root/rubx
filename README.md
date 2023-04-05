@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/mester-root/rubx">
-        <img src="https://raw.githubusercontent.com/Mester-Root/rubx/main/icons/rubx-action.png" alt="Rubx" width="420">
+        <img src="https://raw.githubusercontent.com/Mester-Root/rubx/main/icons/action-rubx.jpg" alt="Rubx" width="420">
     </a>
     <br>
     <b>Rubika Client API Framework for Python</b>
@@ -24,10 +24,11 @@
 
 
 
-Rubx | 🔶 | روبیکس
+#Rubx Client Module | 🔶 |  روبیکس کلاینت ماژول :
+is fast
 ---------------------
 
-## Messenger - مثال پیامرسان:
+## Messenger Methods - مثال پیامرسان:
 
 ```python
 
@@ -57,7 +58,7 @@ with Client(...) as client:
 
 ### Or
 
-## Shorcuts | مثالی از چند میانبر
+### Shorcuts | مثالی از چند میانبر
 
 ```python
 from rb import RubikaClient
@@ -79,7 +80,7 @@ with RubikaClient('session') as client:
     # normally: client.get_chat_info('chat-guid')
 ```
 
-## Rubino | مثال کلاینت روبینو
+## Rubino Methods | مثال کلاینت روبینو :
 
 ``` python
 
@@ -90,7 +91,7 @@ with RubinoClient(__name__, 'session') as client:
 
 ```
 
-## Handler | هندلر
+## Handler Methods | هندلر :
 #### Handler Examples
 
 ```python
@@ -150,7 +151,7 @@ def update(app, update, event):
         # or using repond: message.respond('Hey!', Filters.author)
 ```
 
-## Async methods
+## Async Methods:
 
 ```python
 from rb import Client # Client: asycn reader
@@ -164,7 +165,7 @@ Client.run(run)
 ```
 
 
-## Bot API Methods
+## Bot API Methods:
 
 ### Example for api methods send message text
 ```python
@@ -201,10 +202,6 @@ pip install --user rubx
 pip install rubx --upgrade
 ```
 
-
-## CREATED BY:
-    - saleh
-
 _____________________________
 
 Rubx - ⚡
@@ -230,7 +227,7 @@ This module provides all the desired methods with a very simple and beautiful us
 Give your employer the best experience of a project.
 
 
-Updating - 🌀 :
+Updates - 🌀 :
 --------
    - The complete documentation and optimization.
 
