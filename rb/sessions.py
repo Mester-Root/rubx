@@ -1,1 +1,9 @@
 #!/bin/python
+
+class RubikaClient(object): ...
+
+class RubinoClient(object): ...
+
+class BotAPI(object): ...
+
+__all__ = ['RubikaClient', 'RubinoClient', 'BotAPI']
